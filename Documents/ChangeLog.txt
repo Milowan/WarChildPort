@@ -1,1 +1,1 @@
-added pseudocode for resources base class and expanded playerInventory functionality
+started work on foundry mechanics pseudocode
