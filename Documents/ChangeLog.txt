@@ -1,1 +1,1 @@
-added pseudocode for resources and expanded playerInventory functionality
+added pseudocode for resources base class and expanded playerInventory functionality
