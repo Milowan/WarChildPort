@@ -18,12 +18,15 @@ private:
 	AActor* basicRiflemanBP;
 	AActor* advancedRiflemanBP;
 	AActor* machinePistolmanBP;
-	ACharacter initialTarget;
+	ACharacter* initialTarget;
 
 public:
 	AIManager();
 	~AIManager();
-	
+	void StartWithTarget(ACharacter* character); // Change to ACharacter when built
+	TArray <FTransform> GetSpawnPoints();
+	AActor* GetInactiveEnemy(); // Change to AEnemy when built
+	int GetPoolSize();
 
 protected:
 	
