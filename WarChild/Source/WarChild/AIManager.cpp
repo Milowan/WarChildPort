@@ -49,12 +49,12 @@ TArray<FTransform> AIManager::GetSpawnPoints()
 
 AActor * AIManager::GetInactiveEnemy()
 {
-	AActor* tempEnemy;
-	for each (AActor* enemy in aiPool)
+	AActor* tempEnemy = 0;
+	for (int i = 0; i < aiPool.Num(); i++)
 	{
-		if (enemy->IsActorTickEnabled())
+		if (aiPool[i]->IsActorTickEnabled())
 		{
-			tempEnemy = enemy;
+			tempEnemy = aiPool[i];
 			// tempEnemy->SetTarget(initialTarget);
 			break;
 		}
