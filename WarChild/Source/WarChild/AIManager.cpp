@@ -26,9 +26,43 @@ AIManager::AIManager()
 	}
 
 	spawnPoints.SetNum(aiPool.Num());
-
+	for (int i = 0; i < spawnPoints.Num(); i++)
+	{
+		// Possibly convert this to spawn points being children of this manager instead of just the aiPool.Num()
+		spawnPoints[i].SetLocation(aiPool[i]->GetActorLocation());
+	}
 }
 
 AIManager::~AIManager()
 {
+}
+
+void AIManager::StartWithTarget(ACharacter* character)
+{
+	initialTarget = character;
+}
+
+TArray<FTransform> AIManager::GetSpawnPoints()
+{
+	return spawnPoints;
+}
+
+AActor * AIManager::GetInactiveEnemy()
+{
+	AActor* tempEnemy;
+	for each (AActor* enemy in aiPool)
+	{
+		if (enemy->IsActorTickEnabled())
+		{
+			tempEnemy = enemy;
+			// tempEnemy->SetTarget(initialTarget);
+			break;
+		}
+	}
+	return tempEnemy;
+}
+
+int AIManager::GetPoolSize()
+{
+	return aiPool.Num();
 }
