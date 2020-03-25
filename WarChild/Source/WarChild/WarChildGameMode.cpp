@@ -1,7 +1,7 @@
 // Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
 
 #include "WarChildGameMode.h"
-#include "WarChildCharacter.h"
+#include "Characters/PlayerCharacter.h"
 #include "UObject/ConstructorHelpers.h"
 
 AWarChildGameMode::AWarChildGameMode()
