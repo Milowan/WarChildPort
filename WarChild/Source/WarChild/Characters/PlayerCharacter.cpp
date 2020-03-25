@@ -46,6 +46,12 @@ APlayerCharacter::APlayerCharacter()
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
 }
 
+void APlayerCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	active = true;
+}
+
 //////////////////////////////////////////////////////////////////////////
 // Input
 

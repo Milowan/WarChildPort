@@ -67,6 +67,8 @@ protected:
 
 protected:
 
+	virtual void BeginPlay() override;
+
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	// End of APawn interface

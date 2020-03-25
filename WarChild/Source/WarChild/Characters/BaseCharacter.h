@@ -13,8 +13,17 @@ private:
 
 	GENERATED_BODY()
 
-	bool active;
 	FVector spawnPoint;
+
+protected:
+
+	bool active;
+
+private:
+
+	void Pause();
+	void UnPause();
+
 
 protected:
 	// Called when the game starts or when spawned
@@ -35,10 +44,4 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-private:
-
-	void Pause();
-	void UnPause();
-
 };
