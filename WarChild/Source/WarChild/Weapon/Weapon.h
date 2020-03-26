@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/StaticMeshComponent.h"
+#include "Stats/WeaponStats.h"
 #include "Weapon.generated.h"
 
 UCLASS()
@@ -16,6 +17,18 @@ private:
 
 	UPROPERTY()
 	UStaticMeshComponent* mesh;
+
+	float deltaTime;
+
+	bool reloading;
+	float reloadTimer;
+	float cooldown;
+	float cdTimer;
+	int currentClip;
+
+protected:
+
+	WeaponStats* stats;
 	
 protected:
 

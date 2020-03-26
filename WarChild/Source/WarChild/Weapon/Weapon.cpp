@@ -18,6 +18,12 @@ void AWeapon::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	reloading = false;
+	reloadTimer = 0.0f;
+	SetStats();
+	currentClip = stats->GetClipSize();
+	cooldown = 1 / stats->GetAttackSpeed();
+	cdTimer = cooldown;
 }
 
 // Called every frame
@@ -25,26 +31,57 @@ void AWeapon::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	//if reloading then reload
+	deltaTime = DeltaTime;
+
+	if (reloading)
+	{
+		Reload();
+	}
+	else
+	{
+		reloadTimer = 0.0f;
+	}
 
 }
 
 void AWeapon::Trigger()
 {
-
+	if (currentClip > 0)
+	{
+		if (cdTimer < cooldown)
+		{
+			cdTimer += deltaTime;
+		}
+		else
+		{
+			Fire();
+		}
+	}
+	else
+	{
+		reloading = true;
+	}
 }
 
 int AWeapon::InClip()
 {
-	return 0;
+	return currentClip;
 }
 
 void AWeapon::Fire()
 {
-
+	//shoot bullet
 }
 
 void AWeapon::Reload()
 {
-
+	if (reloadTimer < stats->GetReloadSpeed())
+	{
+		reloadTimer += deltaTime;
+	}
+	else
+	{
+		currentClip = stats->GetClipSize();
+		reloading = false;
+	}
 }

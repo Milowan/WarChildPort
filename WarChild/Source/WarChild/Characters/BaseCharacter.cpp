@@ -17,6 +17,47 @@ void ABaseCharacter::BeginPlay()
 	active = false;
 }
 
+void ABaseCharacter::TurnAtRate(float Rate)
+{
+	// calculate delta for this frame from the rate information
+	AddControllerYawInput(Rate * BaseTurnRate * GetWorld()->GetDeltaSeconds());
+}
+
+void ABaseCharacter::LookUpAtRate(float Rate)
+{
+	// calculate delta for this frame from the rate information
+	AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
+}
+
+void ABaseCharacter::MoveForward(float Value)
+{
+	if ((Controller != NULL) && (Value != 0.0f))
+	{
+		// find out which way is forward
+		const FRotator Rotation = Controller->GetControlRotation();
+		const FRotator YawRotation(0, Rotation.Yaw, 0);
+
+		// get forward vector
+		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+		AddMovementInput(Direction, Value * stats->GetMovSpeed());
+	}
+}
+
+void ABaseCharacter::MoveRight(float Value)
+{
+	if ((Controller != NULL) && (Value != 0.0f))
+	{
+		// find out which way is right
+		const FRotator Rotation = Controller->GetControlRotation();
+		const FRotator YawRotation(0, Rotation.Yaw, 0);
+
+		// get right vector 
+		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+		// add movement in that direction
+		AddMovementInput(Direction, Value * stats->GetMovSpeed());
+	}
+}
+
 void ABaseCharacter::Spawn()
 {
 	FHitResult output;
@@ -32,7 +73,7 @@ void ABaseCharacter::PullTrigger()
 	}
 }
 
-void ABaseCharacter::TakeDamage(float amount)
+void ABaseCharacter::Damaged(float amount)
 {
 	if (stats->ReduceCurrentHP(amount) <= 0)
 	{
