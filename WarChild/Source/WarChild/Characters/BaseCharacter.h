@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Stats/CharacterStats.h"
+#include "Weapon/Weapon.h"
 #include "BaseCharacter.generated.h"
 
 UCLASS(abstract)
@@ -14,10 +16,12 @@ private:
 	GENERATED_BODY()
 
 	FVector spawnPoint;
+	AWeapon* equippedWeapon;
 
 protected:
 
 	bool active;
+	CharacterStats* stats;
 
 private:
 
@@ -35,6 +39,8 @@ public:
 	ABaseCharacter();
 
 	void Spawn();
+	void PullTrigger();
+	void TakeDamage(float amount);
 	virtual void Die() PURE_VIRTUAL(ABaseCharacter::Die, ;);
 
 	void SetSpawnPoint(FVector);
@@ -44,4 +50,11 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	void SetEquippedWeapon(AWeapon* weapon);
+	AWeapon* GetEquippedWeapon();
+
+	virtual void SetStats() PURE_VIRTUAL(ABaseCharacter::SetStats, ;);
+	CharacterStats* GetStats();
+	float GetHealthFraction();
 };

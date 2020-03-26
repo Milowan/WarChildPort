@@ -24,6 +24,22 @@ void ABaseCharacter::Spawn()
 	active = true;
 }
 
+void ABaseCharacter::PullTrigger()
+{
+	if (equippedWeapon != NULL)
+	{
+		equippedWeapon->Trigger();
+	}
+}
+
+void ABaseCharacter::TakeDamage(float amount)
+{
+	if (stats->ReduceCurrentHP(amount) <= 0)
+	{
+		Die();
+	}
+}
+
 void ABaseCharacter::SetSpawnPoint(FVector position)
 {
 	spawnPoint = position;
@@ -52,4 +68,24 @@ void ABaseCharacter::UnPause()
 {
 	if (active)
 		SetActorTickEnabled(true);
+}
+
+void ABaseCharacter::SetEquippedWeapon(AWeapon* weapon)
+{
+	equippedWeapon = weapon;
+}
+
+AWeapon* ABaseCharacter::GetEquippedWeapon()
+{
+	return equippedWeapon;
+}
+
+CharacterStats* ABaseCharacter::GetStats()
+{
+	return stats;
+}
+
+float ABaseCharacter::GetHealthFraction()
+{
+	return stats->GetCurrentHP() / stats->GetMaxHealth();
 }
