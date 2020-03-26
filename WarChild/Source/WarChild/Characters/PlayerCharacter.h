@@ -13,6 +13,7 @@
  * 
  */
 UCLASS()
+[event_receiver(native)]
 class WARCHILD_API APlayerCharacter : public ABaseCharacter
 {
 private:
@@ -59,4 +60,12 @@ public:
 
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+
+	// This is a function that executes with the MyEvent event from CharacterController.
+	void MyEventHandler(int nValue);
+	// This function hooks the function to the event so it can trigger. Functinos can be dynamically hooked and unhooked.
+	//void MyEventHook(ACharacterController* pSource); will need to check into this again at rebuild of Character and Input management. 
+	//void MyEventUnHook(ACharacterController* pSource); currently it would cause circular reference to have the controller here
+
 };

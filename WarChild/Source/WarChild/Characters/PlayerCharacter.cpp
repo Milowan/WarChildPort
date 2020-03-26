@@ -105,3 +105,8 @@ void APlayerCharacter::Die()
 {
 
 }
+
+void APlayerCharacter::MyEventHandler(int nValue)
+{
+	// DO EVENT THINGS!!!!
+}
