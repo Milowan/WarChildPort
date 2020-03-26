@@ -15,8 +15,9 @@ protected:
 	float dmg;
 	float flightSp;
 	float reloadSp;
-	float accuracy;
+	float accuracy;		//1 being perfect, 0 never hitting center
 	int clipSize;
+
 public:
 
 	float GetAttackSpeed();
