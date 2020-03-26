@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "Stats/CharacterStats.h"
+#include "Stats/CharacterStats/CharacterStats.h"
 #include "Weapon/Weapon.h"
 #include "BaseCharacter.generated.h"
 

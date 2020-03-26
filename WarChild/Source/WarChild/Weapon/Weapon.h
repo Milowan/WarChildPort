@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/StaticMeshComponent.h"
-#include "Stats/WeaponStats.h"
+#include "Stats/WeaponStats/WeaponStats.h"
 #include "Weapon.generated.h"
 
 UCLASS()

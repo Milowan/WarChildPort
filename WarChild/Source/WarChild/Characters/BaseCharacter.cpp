@@ -15,6 +15,7 @@ void ABaseCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	active = false;
+	SetStats();
 }
 
 void ABaseCharacter::TurnAtRate(float Rate)
@@ -63,6 +64,7 @@ void ABaseCharacter::Spawn()
 	FHitResult output;
 	SetActorLocation(spawnPoint, false, &output, ETeleportType::TeleportPhysics);
 	active = true;
+	stats->SetCurrentHP(stats->GetMaxHealth());
 }
 
 void ABaseCharacter::PullTrigger()

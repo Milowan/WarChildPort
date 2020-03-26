@@ -6,7 +6,7 @@
 #include "Characters/BaseCharacter.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
-#include "Stats/PlayerStats.h"
+#include "Stats/CharacterStats/PlayerStats.h"
 #include "PlayerCharacter.generated.h"
 
 /**
