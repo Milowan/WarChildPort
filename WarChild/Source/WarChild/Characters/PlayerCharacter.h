@@ -12,8 +12,8 @@
 /**
  * 
  */
+//[event_receiver(native)]
 UCLASS()
-[event_receiver(native)]
 class WARCHILD_API APlayerCharacter : public ABaseCharacter
 {
 private:

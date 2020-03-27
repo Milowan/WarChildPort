@@ -1,10 +1,7 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 
 #include "CharacterController.h"
-#include "Kismet/GameplayStatics.h"
 
-CharacterController::CharacterController()
+ACharacterController::ACharacterController()
 {
 	movSpeed = 100;
 	jumping = false;
@@ -21,17 +18,17 @@ CharacterController::CharacterController()
 	playerCamera = player->GetFollowCamera();
 }
 
-CharacterController::~CharacterController()
+ACharacterController::~ACharacterController()
 {
 }
 
-void CharacterController::BeginPlay()
+void ACharacterController::BeginPlay()
 {
 	//I dont know why this line gets mad but we cant hook into the overlap events without it.
 	//player->GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &AMyActor::BeginOverlap);
 }
 
-void CharacterController::Tick(float DeltaTime)
+void ACharacterController::Tick(float DeltaTime)
 {
 	FVector newPos(0.0f, 0.0f, 0.0f);
 	//newPos.X = Horizontal input axis * movSpeed;   needs input manager hooked up
@@ -55,7 +52,7 @@ void CharacterController::Tick(float DeltaTime)
 
 }
 
-void CharacterController::BeginOverlap(UPrimitiveComponent * OverlappedComponent, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+void ACharacterController::BeginOverlap(UPrimitiveComponent * OverlappedComponent, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
 	int tempTerrain = 0; // to become Terrain tempTerrain = Cast<Terrain>(OtherActor);
 	if (tempTerrain)
