@@ -8,11 +8,10 @@
 #include "BaseCharacterController.generated.h"
 
 
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_SixParams(FBeginOverlapSignature, UPrimitiveComponent*, OverlappedComponent, AActor*, OtherActor,
-	UPrimitiveComponent*, OtherComp, int32, OtherBodyIndex, bool, bFromSweep,
-		const FHitResult, &SweepResult);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_SixParams(FBeginOverlapSignature1, UPrimitiveComponent*, OverlappedComponent, AActor*, OtherActor, UPrimitiveComponent*, OtherComp, int32, OtherBodyIndex, bool, bFromSweep, const FHitResult&, SweepResult);
 
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FRamaMeleeHitSignature, class AActor*, HitActor);
 /**
  * 
  */
@@ -33,7 +32,10 @@ private:
 
 
 	UPROPERTY()
-	FBeginOverlapSignature BegunOverlap;
+	FBeginOverlapSignature1 BegunOverlap;
+
+	UPROPERTY()
+	FRamaMeleeHitSignature onHit;
 
 
 public:
