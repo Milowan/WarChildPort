@@ -12,16 +12,16 @@ ACharacterController::ACharacterController()
 	yaw = 0;
 
 	//If you're looking for players, why not just search for the player characters?
-	TSubclassOf<AActor> classToFind;//Not necessary
-	TArray<AActor*> foundPlayerArray;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerCharacter::StaticClass(), foundPlayerArray);
-	if (foundPlayerArray[0])
-	{
-		player = Cast<APlayerCharacter>(foundPlayerArray[0]);//Lets check pointers before we try to access them.
-		
-		if(player)
-			playerCamera = player->GetFollowCamera();
-	}	
+	//TSubclassOf<AActor> classToFind;//Not necessary
+	//TArray<AActor*> foundPlayerArray;
+	//UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerCharacter::StaticClass(), foundPlayerArray);
+	//if (foundPlayerArray[0])
+	//{
+	//	player = Cast<APlayerCharacter>(foundPlayerArray[0]);//Lets check pointers before we try to access them.
+	//	
+	//	if(player)
+	//		playerCamera = player->GetFollowCamera();
+	//}	
 }
 
 ACharacterController::~ACharacterController()
