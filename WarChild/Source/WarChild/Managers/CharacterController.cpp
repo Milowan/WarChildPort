@@ -11,11 +11,17 @@ ACharacterController::ACharacterController()
 	pitch = 0;
 	yaw = 0;
 
-	TSubclassOf<AActor> classToFind;
+	//If you're looking for players, why not just search for the player characters?
+	TSubclassOf<AActor> classToFind;//Not necessary
 	TArray<AActor*> foundPlayerArray;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), classToFind, foundPlayerArray);
-	player = Cast<APlayerCharacter>(foundPlayerArray[0]);
-	playerCamera = player->GetFollowCamera();
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerCharacter::StaticClass(), foundPlayerArray);
+	if (foundPlayerArray[0])
+	{
+		player = Cast<APlayerCharacter>(foundPlayerArray[0]);//Lets check pointers before we try to access them.
+		
+		if(player)
+			playerCamera = player->GetFollowCamera();
+	}	
 }
 
 ACharacterController::~ACharacterController()
@@ -24,12 +30,19 @@ ACharacterController::~ACharacterController()
 
 void ACharacterController::BeginPlay()
 {
+	Super::BeginPlay(); //Otherwise your tick wont run... Should keep in the habit of calling parent functions when dealing with engine related functions.
+
 	//I dont know why this line gets mad but we cant hook into the overlap events without it.
 	//player->GetCapsuleComponent()->OnComponentBeginOverlap.AddDynamic(this, &AMyActor::BeginOverlap);
 }
 
 void ACharacterController::Tick(float DeltaTime)
 {
+	Super::Tick(DeltaTime);
+
+	if (!player || !playerCamera)//fail safe
+		return;
+
 	FVector newPos(0.0f, 0.0f, 0.0f);
 	//newPos.X = Horizontal input axis * movSpeed;   needs input manager hooked up
 	newPos.Y = 0;
