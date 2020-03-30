@@ -3,11 +3,24 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "MissionManager.generated.h"
 
-
-class WARCHILD_API MissionManager
+UCLASS()
+class WARCHILD_API AMissionManager : public AActor
 {
-public:
-	MissionManager();
-	~MissionManager();
+	GENERATED_BODY()
+	
+public:	
+	// Sets default values for this actor's properties
+	AMissionManager();
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
 };
