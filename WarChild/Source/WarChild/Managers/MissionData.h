@@ -2,28 +2,31 @@
 
 #pragma once
 #include "Managers/Mission.h"
-#include "Vector.h"
-#include <vector>
+#include "GameFramework/Actor.h"
 #include "CoreMinimal.h"
-
+#include "MissionData.generated.h"
 /**
  * 
  */
-class WARCHILD_API MissionData
+UCLASS()
+class WARCHILD_API UMissionData : public UObject//Data should be added to structs - its common convention
 {
-
 private:
+	GENERATED_BODY()
 
-	static std::vector<Mission> missions;
+	//Why not TArray? 
+	//static std::vector<Mission> missions;
+	TArray<AMission*> missions;
+
 
 
 public:
 
-	MissionData();
-	~MissionData();
+	UMissionData();
+	~UMissionData();
 
-	static void AddToList(Mission mission);
-	static void Save();
-	static void Load();
+	void AddToList(AMission mission);
+	void Save();
+	void Load();
 
 };

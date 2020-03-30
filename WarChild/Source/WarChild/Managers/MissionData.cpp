@@ -2,27 +2,30 @@
 
 
 #include "MissionData.h"
+#include "Mission.h"
 
-MissionData::MissionData()
+UMissionData::UMissionData()
+	: Super()
 {
 
 }
 
-MissionData::~MissionData()
+UMissionData::~UMissionData()
 {
 }
 
-void MissionData::AddToList(Mission mission)
+void UMissionData::AddToList(AMission mission)
 {
-	missions.push_back(mission);
+	//missions.push_back(mission);
+	missions.Add(&mission);
 }
 
-void MissionData::Save()
+void UMissionData::Save()
 {
-	// I'll need gavin's help to implement saving and loading here
+	// I'll need Gavin's help to implement saving and loading here
 }
 
-void MissionData::Load()
+void UMissionData::Load()
 {
-	// I'll need gavin's help to implement saving and loading here
+	// I'll need Gavin's help to implement saving and loading here
 }

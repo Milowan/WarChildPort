@@ -4,7 +4,7 @@
 #include "Mission.h"
 
 
-Mission::Mission(std::string name, bool isUnlocked, Mission* prev)
+AMission::AMission(std::string name, bool isUnlocked, AMission* prev)
 {
 	mName = name;
 	unlocked = isUnlocked;
@@ -19,28 +19,40 @@ Mission::Mission(std::string name, bool isUnlocked, Mission* prev)
 	}
 }
 
-Mission::~Mission()
+AMission::AMission(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
+{
+
+}
+
+AMission::~AMission()
 {
 }
 
-void Mission::SetNext(Mission* nMission)
+/*
+	You shouldn't try to manage other missions within your mission class
+	If you need to manage the missions create a manager class.
+
+	Remember an object should only ever do one thing - missions should never set the next mission.
+*/
+void AMission::SetNext(AMission* nMission)
 {
 	mNext = nMission;
 }
 
-void Mission::Complete()
+void AMission::Complete()
 {
 	completed = true;
 	if (mNext != nullptr)
 		mNext->Unlock();
 }
 
-void Mission::Unlock()
+void AMission::Unlock()
 {
 	unlocked = true;
 }
 
-std::string Mission::GetName()
+std::string AMission::GetName()
 {
 	return mName;
 }

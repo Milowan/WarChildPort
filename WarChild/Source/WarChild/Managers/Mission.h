@@ -3,30 +3,33 @@
 #pragma once
 #include <string>
 #include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "Mission.generated.h"
 
 /**
  * 
  */
-class WARCHILD_API Mission
+UCLASS()
+class WARCHILD_API AMission : public AActor
 {
-
 private:
+
+	GENERATED_BODY()
 
 	bool unlocked;
 	bool completed;
-	Mission* mNext;
-	Mission* mPrev;
+	AMission* mNext;
+	AMission* mPrev;
 	std::string mName;
-
-
 
 
 public:
 
-	Mission(std::string name, bool isUnlocked = false, Mission* prev = nullptr);
-	~Mission();
+	AMission(const FObjectInitializer& ObjectInitializer);
+	AMission(std::string name, bool isUnlocked = false, AMission* prev = nullptr);
+	~AMission();
 
-	void SetNext(Mission* nMission);
+	void SetNext(AMission* nMission);
 
 	void Complete();
 
