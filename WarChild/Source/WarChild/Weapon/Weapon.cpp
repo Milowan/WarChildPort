@@ -71,6 +71,7 @@ int AWeapon::InClip()
 void AWeapon::Fire()
 {
 	//shoot bullet
+	//GetActorForwardVector();
 }
 
 void AWeapon::Reload()
