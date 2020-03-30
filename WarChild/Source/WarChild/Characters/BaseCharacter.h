@@ -49,7 +49,7 @@ protected:
 public:	
 
 	// Sets default values for this character's properties
-	ABaseCharacter();
+	ABaseCharacter(const FObjectInitializer& ObjectInitializer);
 
 	/** Called for forwards/backward input */
 	void MoveForward(float Value);

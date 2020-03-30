@@ -51,7 +51,7 @@ protected:
 
 public:
 
-	APlayerCharacter();
+	APlayerCharacter(const FObjectInitializer& ObjectInitializer);
 
 	void Die() override;
 
