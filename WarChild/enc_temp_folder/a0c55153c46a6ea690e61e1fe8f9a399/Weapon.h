@@ -50,8 +50,6 @@ public:
 	// Sets default values for this actor's properties
 	AWeapon(const FObjectInitializer& ObjectInitializer);
 
-	~AWeapon();
-
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 

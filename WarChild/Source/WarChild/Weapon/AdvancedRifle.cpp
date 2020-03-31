@@ -3,6 +3,10 @@
 
 #include "AdvancedRifle.h"
 
+AAdvancedRifle::AAdvancedRifle(const FObjectInitializer& ObjectInitializer) :
+	Super(ObjectInitializer)
+{}
+
 void AAdvancedRifle::SetStats()
 {
 	stats = new AdvancedRifleStats();

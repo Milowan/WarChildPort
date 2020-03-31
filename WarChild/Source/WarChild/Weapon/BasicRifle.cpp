@@ -3,6 +3,10 @@
 
 #include "BasicRifle.h"
 
+ABasicRifle::ABasicRifle(const FObjectInitializer& ObjectInitializer) :
+	Super(ObjectInitializer)
+{}
+
 void ABasicRifle::SetStats()
 {
 	stats = new BasicRifleStats();

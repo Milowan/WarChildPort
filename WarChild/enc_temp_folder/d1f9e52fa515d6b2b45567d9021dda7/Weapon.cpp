@@ -14,11 +14,6 @@ AWeapon::AWeapon(const FObjectInitializer& ObjectInitializer) :
 	mesh->SetupAttachment(RootComponent);
 }
 
-AWeapon::~AWeapon()
-{
-	delete stats;
-}
-
 // Called when the game starts or when spawned
 void AWeapon::BeginPlay()
 {

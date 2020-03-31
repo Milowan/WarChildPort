@@ -20,5 +20,9 @@ private:
 protected:
 
 	void SetStats() override;
+
+public:
+
+	AAdvancedRifle(const FObjectInitializer& ObjectInitializer);
 	
 };

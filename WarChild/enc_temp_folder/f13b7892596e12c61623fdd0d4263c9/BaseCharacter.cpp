@@ -11,11 +11,6 @@ ABaseCharacter::ABaseCharacter(const FObjectInitializer& ObjectInitializer)
 	PrimaryActorTick.bCanEverTick = true;
 }
 
-ABaseCharacter::~ABaseCharacter()
-{
-	delete stats;
-}
-
 // Called when the game starts or when spawned
 void ABaseCharacter::BeginPlay()
 {

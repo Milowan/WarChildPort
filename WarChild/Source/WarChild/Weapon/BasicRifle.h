@@ -21,4 +21,8 @@ protected:
 
 	void SetStats() override;
 
+public:
+
+	ABasicRifle(const FObjectInitializer& ObjectInitializer);
+
 };

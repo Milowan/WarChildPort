@@ -51,8 +51,6 @@ public:
 	// Sets default values for this character's properties
 	ABaseCharacter(const FObjectInitializer& ObjectInitializer);
 
-	~ABaseCharacter();
-
 	/** Called for forwards/backward input */
 	void MoveForward(float Value);
 
