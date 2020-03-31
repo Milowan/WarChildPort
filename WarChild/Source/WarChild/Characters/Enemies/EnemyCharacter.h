@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Characters/BaseCharacter.h"
+#include "Characters/ArmedCharacter.h"
 #include "EnemyCharacter.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class WARCHILD_API AEnemyCharacter : public ABaseCharacter
+class WARCHILD_API AEnemyCharacter : public AArmedCharacter
 {
 private:
 

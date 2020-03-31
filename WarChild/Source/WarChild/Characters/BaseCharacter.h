@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Stats/CharacterStats/CharacterStats.h"
-#include "Weapon/Weapon.h"
 #include "BaseCharacter.generated.h"
 
 UCLASS(abstract)
@@ -16,7 +15,6 @@ private:
 	GENERATED_BODY()
 
 	FVector spawnPoint;
-	AWeapon* equippedWeapon;
 
 protected:
 
@@ -72,7 +70,6 @@ public:
 	void LookUpAtRate(float Rate);
 
 	void Spawn();
-	void PullTrigger();
 	void Damaged(float amount);
 	virtual void Die() PURE_VIRTUAL(ABaseCharacter::Die, ;);
 
@@ -83,9 +80,6 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-	void SetEquippedWeapon(AWeapon* weapon);
-	AWeapon* GetEquippedWeapon();
 
 	CharacterStats* GetStats();
 	float GetHealthFraction();

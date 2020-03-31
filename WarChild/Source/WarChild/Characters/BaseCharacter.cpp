@@ -73,14 +73,6 @@ void ABaseCharacter::Spawn()
 	stats->SetCurrentHP(stats->GetMaxHealth());
 }
 
-void ABaseCharacter::PullTrigger()
-{
-	if (equippedWeapon != NULL)
-	{
-		equippedWeapon->Trigger();
-	}
-}
-
 void ABaseCharacter::Damaged(float amount)
 {
 	if (stats->ReduceCurrentHP(amount) <= 0)
@@ -117,16 +109,6 @@ void ABaseCharacter::UnPause()
 {
 	if (active)
 		SetActorTickEnabled(true);
-}
-
-void ABaseCharacter::SetEquippedWeapon(AWeapon* weapon)
-{
-	equippedWeapon = weapon;
-}
-
-AWeapon* ABaseCharacter::GetEquippedWeapon()
-{
-	return equippedWeapon;
 }
 
 CharacterStats* ABaseCharacter::GetStats()

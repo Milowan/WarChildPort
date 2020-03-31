@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Characters/BaseCharacter.h"
+#include "Characters/ArmedCharacter.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Stats/CharacterStats/PlayerStats.h"
@@ -14,7 +14,7 @@
  */
 //[event_receiver(native)]
 UCLASS()
-class WARCHILD_API APlayerCharacter : public ABaseCharacter
+class WARCHILD_API APlayerCharacter : public AArmedCharacter
 {
 private:
 
