@@ -3,23 +3,33 @@
 
 #include "BulletPool.h"
 
-BulletPool* BulletPool::instance = NULL;
+UBulletPool* UBulletPool::instance = NULL;
 
-BulletPool* BulletPool::GetInstance()
+UBulletPool* UBulletPool::GetInstance()
 {
 	if (instance == NULL)
-		instance = new BulletPool();
+		instance = NewObject<UBulletPool>();
+
+	if (instance->pool.Num() <= 0)
+	{
+		instance->FillPool();
+	}
 
 	return instance;
 }
 
-void BulletPool::Release()
+void UBulletPool::Release()
 {
 	delete instance;
 	instance = NULL;
 }
 
-BulletPool::BulletPool()
+void UBulletPool::SetWorld(UWorld* wrld)
+{
+	world = wrld;
+}
+
+void UBulletPool::FillPool()
 {
 	int poolSize = 80;
 
@@ -29,12 +39,7 @@ BulletPool::BulletPool()
 	}
 }
 
-void BulletPool::SetWorld(UWorld* wrld)
-{
-	world = wrld;
-}
-
-ABullet* BulletPool::GetFreeBullet()
+ABullet* UBulletPool::GetFreeBullet()
 {
 	ABullet* bullet = NULL;
 

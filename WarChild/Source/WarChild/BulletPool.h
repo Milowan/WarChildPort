@@ -3,29 +3,31 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Object.h"
 #include "Bullet.h"
+#include "BulletPool.generated.h"
 
 /**
  * 
  */
-class WARCHILD_API BulletPool
+UCLASS()
+class WARCHILD_API UBulletPool : public UObject
 {
 private:
 
+	GENERATED_BODY()
+
 	TArray<ABullet*> pool;
 	UWorld* world;
-	static BulletPool* instance;
+	static UBulletPool* instance;
 
 public:
 
-	static BulletPool* GetInstance();
+	static UBulletPool* GetInstance();
 	static void Release();
 
 	void SetWorld(UWorld* wrld);
+	void FillPool();
 
 	ABullet* GetFreeBullet();
-
-private:
-
-	BulletPool();
 };
