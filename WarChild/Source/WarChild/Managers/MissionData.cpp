@@ -14,6 +14,11 @@ UMissionData::~UMissionData()
 {
 }
 
+TArray<AMission*> UMissionData::GetMissionArray()
+{
+	return missions;
+}
+
 void UMissionData::AddToList(AMission mission)
 {
 	//missions.push_back(mission);

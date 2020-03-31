@@ -25,6 +25,7 @@ public:
 	UMissionData();
 	~UMissionData();
 
+	TArray<AMission*> GetMissionArray();
 	void AddToList(AMission mission);
 	void Save();
 	void Load();
