@@ -8,6 +8,7 @@
 #include "Managers/UIManager.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Stats/CharacterStats/PlayerStats.h"
+#include "Kismet/GameplayStatics.h"
 #include "PlayerCharacter.generated.h"
 
 /**
@@ -27,6 +28,8 @@ private:
 	/** Follow camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FollowCamera;
+
+	AUIManager* uiManager;
 
 protected:
 
@@ -49,5 +52,9 @@ public:
 
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+private:
+
+	void CloseCurrentMenu();
 
 };

@@ -45,12 +45,23 @@ APlayerCharacter::APlayerCharacter(const FObjectInitializer& ObjectInitializer)
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+
+	uiManager = 0;
 }
 
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	active = true;
+
+
+	TSubclassOf<AUIManager> uiManagerClass = 0;
+	TArray<AActor*> uiManagerArray;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), uiManagerClass, uiManagerArray);
+	if (uiManagerArray.Num() != 0)
+	{
+		uiManager = Cast<AUIManager>(uiManagerArray[0]);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -68,8 +79,6 @@ void APlayerCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 	PlayerInputComponent->BindAxis("MoveForward", this, &ABaseCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ABaseCharacter::MoveRight);
 
-	//PlayerInputComponent->BindAction("Escape", IE_Released, this, &UUIManager::CloseCurrentMenu);
-
 	// We have 2 versions of the rotation bindings to handle different kinds of devices differently
 	// "turn" handles devices that provide an absolute delta, such as a mouse.
 	// "turnrate" is for devices that we choose to treat as a rate of change, such as an analog joystick
@@ -77,6 +86,15 @@ void APlayerCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerIn
 	PlayerInputComponent->BindAxis("TurnRate", this, &ABaseCharacter::TurnAtRate);
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis("LookUpRate", this, &ABaseCharacter::LookUpAtRate);
+
+	// ----------------- Repeat this process for all non-gameplay inputs (opening and closing menus). ----------------- //
+	PlayerInputComponent->BindAction("Escape", IE_Pressed, this, &APlayerCharacter::CloseCurrentMenu);
+	
+
+
+
+
+
 
 }
 
@@ -88,4 +106,10 @@ void APlayerCharacter::SetStats()
 void APlayerCharacter::Die()
 {
 
+}
+
+void APlayerCharacter::CloseCurrentMenu()
+{
+	//Add check if menu is open, if no menu is open, pause?
+	uiManager->CloseCurrentMenu();
 }

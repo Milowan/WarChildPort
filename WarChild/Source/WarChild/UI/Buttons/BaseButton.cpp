@@ -12,3 +12,7 @@ UBaseButton::~UBaseButton()
 {
 
 }
+
+void UBaseButton::Activate()
+{
+}

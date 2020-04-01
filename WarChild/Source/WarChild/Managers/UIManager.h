@@ -3,43 +3,40 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UObject/Interface.h"
+#include "GameFramework/Actor.h"
 #include "UIManager.generated.h"
 
-// This class does not need to be modified.
-UINTERFACE(MinimalAPI)
-class UUIManager : public UInterface
+UCLASS()
+class WARCHILD_API AUIManager : public AActor
 {
 	GENERATED_BODY()
-
+	
 private:
-	// Add variable to hold which menu is currently open
 
-public:
+	enum MenuTypes {NAV, ARSENAL, EXTRACT};
+	TArray<MenuTypes> openMenus;
 
-	void CloseCurrentMenu();
+public:	
+	// Sets default values for this actor's properties
+	AUIManager(const FObjectInitializer& ObjectInitializer);
+	~AUIManager();
 
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
 
-};
+public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 
-/**
- * 
- */
-class WARCHILD_API IUIManager
-{
-	GENERATED_BODY()
-
-	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
-public:
-
-	// CLASSES THAT WANT TO USE THIS EVENT MANAGER:
-	// Class must inherit from IUIManager
-	// Classes must publicly define all events (even by leaving them empty) or it will cause errors.
+	// Menu Functions
 	void OpenNavigation();
 	void CloseNavigation();
 	void OpenArsenal();
 	void CloseArsenal();
 	void OpenExtraction();
 	void CloseExctraction();
+
+	void CloseCurrentMenu();
 
 };

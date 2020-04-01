@@ -26,7 +26,7 @@ public:
 
 protected:
 
-	//virtual void Activate();
+	virtual void Activate();
 
 
 };
