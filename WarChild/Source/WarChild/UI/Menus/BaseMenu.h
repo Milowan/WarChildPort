@@ -19,9 +19,8 @@ private:
 
 public:
 
-	UBaseMenu();
+	UBaseMenu(const FObjectInitializer& ObjectInitializer);
 	~UBaseMenu();
 
-	//virtual void Tick(FGeometry MyGeometry, float InDeltaTime) override;
 
 };

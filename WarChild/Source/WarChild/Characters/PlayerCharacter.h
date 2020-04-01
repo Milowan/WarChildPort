@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Characters/ArmedCharacter.h"
 #include "Camera/CameraComponent.h"
+#include "Managers/UIManager.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Stats/CharacterStats/PlayerStats.h"
 #include "PlayerCharacter.generated.h"
@@ -12,7 +13,6 @@
 /**
  * 
  */
-//[event_receiver(native)]
 UCLASS()
 class WARCHILD_API APlayerCharacter : public AArmedCharacter
 {
@@ -27,17 +27,6 @@ private:
 	/** Follow camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FollowCamera;
-
-protected:
-
-	/** Resets HMD orientation in VR. */
-	void OnResetVR();
-
-	/** Handler for when a touch input begins. */
-	void TouchStarted(ETouchIndex::Type FingerIndex, FVector Location);
-
-	/** Handler for when a touch input stops. */
-	void TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
 
 protected:
 
@@ -60,12 +49,5 @@ public:
 
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
-
-
-	// This is a function that executes with the MyEvent event from CharacterController.
-	void MyEventHandler(int nValue);
-	// This function hooks the function to the event so it can trigger. Functinos can be dynamically hooked and unhooked.
-	//void MyEventHook(ACharacterController* pSource); will need to check into this again at rebuild of Character and Input management. 
-	//void MyEventUnHook(ACharacterController* pSource); currently it would cause circular reference to have the controller here
 
 };

@@ -11,6 +11,15 @@ UINTERFACE(MinimalAPI)
 class UUIManager : public UInterface
 {
 	GENERATED_BODY()
+
+private:
+	// Add variable to hold which menu is currently open
+
+public:
+
+	void CloseCurrentMenu();
+
+
 };
 
 /**

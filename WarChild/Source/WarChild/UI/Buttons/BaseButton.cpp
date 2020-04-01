@@ -3,3 +3,12 @@
 
 #include "BaseButton.h"
 
+UBaseButton::UBaseButton()
+{
+
+}
+
+UBaseButton::~UBaseButton()
+{
+
+}

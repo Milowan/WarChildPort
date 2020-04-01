@@ -3,9 +3,10 @@
 
 #include "BaseMenu.h"
 
-UBaseMenu::UBaseMenu()
+UBaseMenu::UBaseMenu(const FObjectInitializer& ObjectInitializer)
+	: Super::UUserWidget(ObjectInitializer)
 {
-
+	
 }
 
 UBaseMenu::~UBaseMenu()

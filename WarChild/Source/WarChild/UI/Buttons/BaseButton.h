@@ -14,4 +14,19 @@ class WARCHILD_API UBaseButton : public UButton
 {
 	GENERATED_BODY()
 	
+
+private:
+
+
+
+public:
+
+	UBaseButton();
+	~UBaseButton();
+
+protected:
+
+	//virtual void Activate();
+
+
 };
