@@ -23,8 +23,14 @@ protected:
 
 public:
 
+	UFUNCTION(BlueprintCallable)
 	void SetEquippedWeapon(AWeapon* weapon);
+	UFUNCTION(BlueprintCallable)
 	AWeapon* GetEquippedWeapon();
 	void PullTrigger();
+
+protected:
+
+	virtual void BeginPlay() override;
 	
 };

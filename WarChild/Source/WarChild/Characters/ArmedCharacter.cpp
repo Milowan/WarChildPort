@@ -21,3 +21,13 @@ AWeapon* AArmedCharacter::GetEquippedWeapon()
 {
 	return equippedWeapon;
 }
+
+void AArmedCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	if (equippedWeapon != NULL)
+	{
+		equippedWeapon->Initialize();
+		equippedWeapon->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform, FName(TEXT("WeaponSocket")));
+	}
+}

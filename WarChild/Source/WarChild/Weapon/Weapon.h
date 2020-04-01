@@ -58,6 +58,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	void Initialize();
+
 	void Trigger();
 
 	int InClip();

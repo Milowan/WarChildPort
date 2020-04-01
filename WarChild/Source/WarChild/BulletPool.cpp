@@ -10,11 +10,6 @@ UBulletPool* UBulletPool::GetInstance()
 	if (instance == NULL)
 		instance = NewObject<UBulletPool>();
 
-	if (instance->pool.Num() <= 0)
-	{
-		instance->FillPool();
-	}
-
 	return instance;
 }
 
@@ -37,6 +32,11 @@ void UBulletPool::FillPool()
 	{
 		pool.Add(Cast<ABullet>(world->SpawnActor(ABullet::StaticClass())));
 	}
+}
+
+int UBulletPool::GetPoolSize()
+{
+	return pool.Num();
 }
 
 ABullet* UBulletPool::GetFreeBullet()

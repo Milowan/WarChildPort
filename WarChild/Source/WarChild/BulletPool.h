@@ -28,6 +28,7 @@ public:
 
 	void SetWorld(UWorld* wrld);
 	void FillPool();
+	int GetPoolSize();
 
 	ABullet* GetFreeBullet();
 };

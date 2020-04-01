@@ -23,13 +23,6 @@ AWeapon::~AWeapon()
 void AWeapon::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	reloading = false;
-	reloadTimer = 0.0f;
-	SetStats();
-	currentClip = stats->GetClipSize();
-	cooldown = 1 / stats->GetAttackSpeed();
-	cdTimer = cooldown;
 }
 
 // Called every frame
@@ -48,6 +41,22 @@ void AWeapon::Tick(float DeltaTime)
 		reloadTimer = 0.0f;
 	}
 
+}
+
+void AWeapon::Initialize()
+{
+	SetStats();
+	pool = UBulletPool::GetInstance();
+	if (pool->GetPoolSize() <= 0)
+	{
+		pool->SetWorld(GetWorld());
+		pool->FillPool();
+	}
+	reloading = false;
+	reloadTimer = 0.0f;
+	currentClip = stats->GetClipSize();
+	cooldown = 1 / stats->GetAttackSpeed();
+	cdTimer = cooldown;
 }
 
 void AWeapon::Trigger()
