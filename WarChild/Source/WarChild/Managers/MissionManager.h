@@ -5,6 +5,10 @@
 #include "CoreMinimal.h"
 //#include "GameFramework/Actor.h"
 #include "Characters/PlayerCharacter.h"
+#include "Characters/Enemies/EnemyCharacter.h"
+#include "Managers/AIManagerNew.h"
+#include "Managers/GameEventManager.h"
+#include "Managers/UIManager.h"
 #include "Kismet/GameplayStatics.h"
 #include "MissionManager.generated.h"
 
@@ -13,9 +17,12 @@ class WARCHILD_API AMissionManager : public AActor
 {
 	GENERATED_BODY()
 	
-private:
+protected:
 	FVector playerSpawnPoint = FVector();
 	APlayerCharacter* player = 0;
+	AAIManagerNew* aiManager = 0;
+	UGameEventManager* gEventManager = 0;
+	UUIManager* uiManager = 0;
 
 public:	
 	// Sets default values for this actor's properties
@@ -25,11 +32,12 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 
 	virtual void Extract();
 
+
 public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 
 };

@@ -18,20 +18,32 @@ AMissionManager::~AMissionManager()
 void AMissionManager::BeginPlay()
 {
 	Super::BeginPlay();
+
 	TSubclassOf<APlayerCharacter> playerClass = 0;
 	TArray<AActor*> playerArray;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), playerClass, playerArray);
-
 	if (playerArray.Num() != 0)
 	{
 		player = Cast<APlayerCharacter>(playerArray[0]);
 		player->SetActorLocation(playerSpawnPoint, false);
 	}
 
+	TSubclassOf<AAIManagerNew> aiManagerClass = 0;
+	TArray<AActor*> aiManagerArray;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), aiManagerClass, aiManagerArray);
+	if (aiManagerArray.Num() != 0)
+	{
+		aiManager = Cast<AAIManagerNew>(aiManagerArray[0]);
+	}
+
+
 }
 
 void AMissionManager::Extract()
 {
+	// Figure out how to trigger event calls from:
+	// GameEventManager    (TriggerPause)
+	// UIManager           (OpenMenu)
 }
 
 // Called every frame
