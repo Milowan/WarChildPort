@@ -19,6 +19,8 @@ private:
 
 	float deltaTime;
 
+	UBulletPool* pool;
+
 	bool reloading;
 	float reloadTimer;
 	float cooldown;

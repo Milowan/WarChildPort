@@ -77,7 +77,17 @@ int AWeapon::InClip()
 void AWeapon::Fire()
 {
 	//shoot bullet
-	//GetActorForwardVector();
+	if (currentClip > 0)
+	{
+		ABullet* bullet = pool->GetFreeBullet();
+
+		if (bullet != NULL)
+		{
+			currentClip--;
+			bullet->Initialize(GetActorTransform(), GetActorForwardVector(), stats->GetFlightSpeed(), stats->GetDamage());
+			cdTimer = 0.0f;
+		}
+	}
 }
 
 void AWeapon::Reload()
