@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Managers/MissionData.h"
+#include "Missions/MissionData.h"
 #include "MissionInnitializer.generated.h"
 
 UCLASS()

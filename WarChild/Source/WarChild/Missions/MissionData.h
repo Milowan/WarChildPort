@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
-#include "Managers/Mission.h"
+#include "Missions/Mission.h"
 #include "GameFramework/Actor.h"
 #include "CoreMinimal.h"
 #include "MissionData.generated.h"

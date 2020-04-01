@@ -8,6 +8,7 @@
 
 ADefenseMissionManager::ADefenseMissionManager()
 {
+	playerSpawnPoint = FVector(0, 0, 10);
 	waveCooldown = 5;
 	cooldownTimer = 0;
 	spawnCooldown = 3;
@@ -25,11 +26,13 @@ ADefenseMissionManager::~ADefenseMissionManager()
 
 void ADefenseMissionManager::BeginPlay()
 {
+	Super::BeginPlay();
 	StartWave();
 }
 
 void ADefenseMissionManager::Tick(float DeltaTime)
 {
+	Super::Tick(DeltaTime);
 	if (!canSpawn)
 	{
 		if (waveOver)
@@ -76,7 +79,8 @@ void ADefenseMissionManager::Tick(float DeltaTime)
 
 void ADefenseMissionManager::Extract()
 {
-
+	// GameEventManager->TriggerPause();
+	// UIManager.OpenExtractMenu();
 }
 
 void ADefenseMissionManager::StartWave()
