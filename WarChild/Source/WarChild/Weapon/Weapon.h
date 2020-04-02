@@ -16,8 +16,6 @@ private:
 
 	GENERATED_BODY()
 
-	UBulletPool* pool;
-
 	bool reloading;
 	float reloadTimer;
 	float cooldown;
@@ -50,10 +48,10 @@ public:
 	// Sets default values for this actor's properties
 	AWeapon(const FObjectInitializer& ObjectInitializer);
 
-	~AWeapon();
-
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	virtual void Destroyed() override;
 
 	void Initialize();
 

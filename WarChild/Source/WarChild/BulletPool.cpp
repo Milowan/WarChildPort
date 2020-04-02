@@ -20,7 +20,6 @@ UBulletPool* UBulletPool::GetInstance()
 
 void UBulletPool::Release()
 {
-	delete instance;
 	instance = NULL;
 }
 
