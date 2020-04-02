@@ -16,9 +16,6 @@ private:
 
 	GENERATED_BODY()
 
-
-	float deltaTime;
-
 	UBulletPool* pool;
 
 	bool reloading;

@@ -12,6 +12,7 @@ AWeapon::AWeapon(const FObjectInitializer& ObjectInitializer) :
 
 	mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Static Mesh"));
 	mesh->SetupAttachment(RootComponent);
+	mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 
 AWeapon::~AWeapon()
@@ -30,7 +31,15 @@ void AWeapon::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	deltaTime = DeltaTime;
+	if (cdTimer < cooldown)
+	{
+		cdTimer += DeltaTime;
+	}
+
+	if (reloadTimer < stats->GetReloadSpeed())
+	{
+		reloadTimer += DeltaTime;
+	}
 
 	if (reloading)
 	{
@@ -63,11 +72,7 @@ void AWeapon::Trigger()
 {
 	if (currentClip > 0)
 	{
-		if (cdTimer < cooldown)
-		{
-			cdTimer += deltaTime;
-		}
-		else
+		if (cdTimer >= cooldown)
 		{
 			Fire();
 		}
@@ -101,11 +106,7 @@ void AWeapon::Fire()
 
 void AWeapon::Reload()
 {
-	if (reloadTimer < stats->GetReloadSpeed())
-	{
-		reloadTimer += deltaTime;
-	}
-	else
+	if (!(reloadTimer < stats->GetReloadSpeed()))
 	{
 		currentClip = stats->GetClipSize();
 		reloading = false;
