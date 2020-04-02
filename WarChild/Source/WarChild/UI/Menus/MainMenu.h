@@ -3,24 +3,21 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Blueprint/UserWidget.h"
-#include "BaseMenu.generated.h"
+#include "UI/Menus/BaseMenu.h"
+#include "MainMenu.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class WARCHILD_API UBaseMenu : public UUserWidget
+class WARCHILD_API UMainMenu : public UBaseMenu
 {
 	GENERATED_BODY()
-	
-private:
-
 
 public:
 
-	UBaseMenu(const FObjectInitializer& ObjectInitializer);
-	~UBaseMenu();
+	UMainMenu(const FObjectInitializer& ObjectInitializer);
+	~UMainMenu();
 
 	virtual void OpenMenu();
 	virtual void CloseMenu();

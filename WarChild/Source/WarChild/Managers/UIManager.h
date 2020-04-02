@@ -15,6 +15,7 @@ private:
 
 	enum MenuTypes {NAV, ARSENAL, EXTRACT};
 	TArray<MenuTypes> openMenus;
+	// ADD ALL YOUR DIFFERENT MENUS HERE AS NEW OBJECTS
 
 public:	
 	// Sets default values for this actor's properties

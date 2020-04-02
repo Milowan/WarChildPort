@@ -4,11 +4,19 @@
 #include "BaseMenu.h"
 
 UBaseMenu::UBaseMenu(const FObjectInitializer& ObjectInitializer)
-	: Super::UUserWidget(ObjectInitializer)
+	: Super(ObjectInitializer)
 {
 	
 }
 
 UBaseMenu::~UBaseMenu()
+{
+}
+
+void UBaseMenu::OpenMenu()
+{
+}
+
+void UBaseMenu::CloseMenu()
 {
 }
