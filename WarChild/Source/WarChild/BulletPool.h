@@ -22,8 +22,9 @@ private:
 	static UBulletPool* instance;
 
 public:
-
+	~UBulletPool();
 	static UBulletPool* GetInstance();
+	UFUNCTION(BlueprintCallable)
 	static void Release();
 
 	void SetWorld(UWorld* wrld);

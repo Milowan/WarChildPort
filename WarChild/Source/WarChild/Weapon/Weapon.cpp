@@ -15,11 +15,6 @@ AWeapon::AWeapon(const FObjectInitializer& ObjectInitializer) :
 	mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 
-AWeapon::~AWeapon()
-{
-	delete stats;
-}
-
 // Called when the game starts or when spawned
 void AWeapon::BeginPlay()
 {
@@ -52,10 +47,17 @@ void AWeapon::Tick(float DeltaTime)
 
 }
 
+void AWeapon::Destroyed()
+{
+	delete stats;
+
+	UBulletPool::Release();
+}
+
 void AWeapon::Initialize()
 {
 	SetStats();
-	pool = UBulletPool::GetInstance();
+	UBulletPool* pool = UBulletPool::GetInstance();
 	if (pool->GetPoolSize() <= 0)
 	{
 		pool->SetWorld(GetWorld());
@@ -93,7 +95,7 @@ void AWeapon::Fire()
 	//shoot bullet
 	if (currentClip > 0)
 	{
-		ABullet* bullet = pool->GetFreeBullet();
+		ABullet* bullet = UBulletPool::GetInstance()->GetFreeBullet();
 
 		if (bullet != NULL)
 		{

@@ -5,6 +5,11 @@
 
 UBulletPool* UBulletPool::instance = NULL;
 
+UBulletPool::~UBulletPool()
+{
+	instance = nullptr;
+}
+
 UBulletPool* UBulletPool::GetInstance()
 {
 	if (instance == NULL)
@@ -15,7 +20,6 @@ UBulletPool* UBulletPool::GetInstance()
 
 void UBulletPool::Release()
 {
-	delete instance;
 	instance = NULL;
 }
 
@@ -45,7 +49,7 @@ ABullet* UBulletPool::GetFreeBullet()
 
 	for (int i = 0; i < pool.Num(); ++i)
 	{
-		if (!pool[i]->IsActorTickEnabled())
+		if (IsValid(pool[i]) && !pool[i]->IsActorTickEnabled())
 		{
 			bullet = pool[i];
 			break;
