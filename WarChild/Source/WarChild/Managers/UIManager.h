@@ -3,7 +3,17 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Kismet/GameplayStatics.h"
 #include "GameFramework/Actor.h"
+
+// button includes
+
+#include "UI/Menus/ArsenalMenu.h"
+#include "UI/Menus/ExtractMenu.h"
+#include "UI/Menus/MainMenu.h"
+#include "UI/Menus/NavMenu.h"
+#include "Missions/MissionTracker.h"
+
 #include "UIManager.generated.h"
 
 UCLASS()
@@ -16,6 +26,11 @@ private:
 	enum MenuTypes {NAV, ARSENAL, EXTRACT};
 	TArray<MenuTypes> openMenus;
 	// ADD ALL YOUR DIFFERENT MENUS HERE AS NEW OBJECTS
+	UArsenalMenu* arsenal;
+	UExtractMenu* extract;
+	UMainMenu* main;
+	UNavMenu* nav;
+	AMissionTracker* tracker;
 
 public:	
 	// Sets default values for this actor's properties

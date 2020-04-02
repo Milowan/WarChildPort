@@ -6,6 +6,7 @@
 UArsenalMenu::UArsenalMenu(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
+
 }
 
 UArsenalMenu::~UArsenalMenu()

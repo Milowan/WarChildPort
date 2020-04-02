@@ -3,6 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Managers/UIManager.h"
+
+
 #include "Components/Button.h"
 #include "BaseButton.generated.h"
 
@@ -17,6 +20,7 @@ class WARCHILD_API UBaseButton : public UButton
 
 private:
 
+	AUIManager* uiManager;
 
 
 public:
