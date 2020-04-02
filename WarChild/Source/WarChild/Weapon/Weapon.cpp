@@ -10,6 +10,11 @@ AWeapon::AWeapon(const FObjectInitializer& ObjectInitializer) :
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	root = CreateDefaultSubobject<USphereComponent>(TEXT("Root"));
+	RootComponent = root;
+	root->SetVisibility(false);
+	root->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
 	mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Static Mesh"));
 	mesh->SetupAttachment(RootComponent);
 	mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);

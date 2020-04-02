@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/SphereComponent.h"
 #include "Stats/WeaponStats/WeaponStats.h"
 #include "BulletPool.h"
 #include "Weapon.generated.h"
@@ -21,6 +22,8 @@ private:
 	float cooldown;
 	float cdTimer;
 	int currentClip;
+
+	USphereComponent* root;
 
 protected:
 
