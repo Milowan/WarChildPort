@@ -24,6 +24,7 @@ private:
 public:
 
 	static UBulletPool* GetInstance();
+	UFUNCTION(BlueprintCallable)
 	static void Release();
 
 	void SetWorld(UWorld* wrld);
