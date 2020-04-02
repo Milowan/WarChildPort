@@ -45,7 +45,7 @@ ABullet* UBulletPool::GetFreeBullet()
 
 	for (int i = 0; i < pool.Num(); ++i)
 	{
-		if (!pool[i]->IsActorTickEnabled())
+		if (IsValid(pool[i]) && !pool[i]->IsActorTickEnabled())
 		{
 			bullet = pool[i];
 			break;
