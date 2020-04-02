@@ -5,6 +5,11 @@
 
 UBulletPool* UBulletPool::instance = NULL;
 
+UBulletPool::~UBulletPool()
+{
+	instance = nullptr;
+}
+
 UBulletPool* UBulletPool::GetInstance()
 {
 	if (instance == NULL)

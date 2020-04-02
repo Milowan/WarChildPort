@@ -22,7 +22,7 @@ private:
 	static UBulletPool* instance;
 
 public:
-
+	~UBulletPool();
 	static UBulletPool* GetInstance();
 	static void Release();
 
