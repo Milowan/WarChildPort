@@ -28,6 +28,6 @@ void UNavMenu::SetMissionButtons()
 	// FText mButton = button.child component - text
 	// for loop through MissionData.missions[]
 	// if mButton.text == MissionData.missions[i].GetName()
-	// Button.SetTargetLevel(MissionData.missions[i]
+	// Button.SetTargetLevel(MissionData.missions[i])
 	// break
 }

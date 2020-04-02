@@ -20,7 +20,31 @@ AUIManager::~AUIManager()
 void AUIManager::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	//UArsenalMenu* arsenal;
+	//UExtractMenu* extract;
+	//UMainMenu* main;
+	//UNavMenu* nav;
+	//AMissionTracker* tracker;
+	//APlayerCharacter* player;
+
+	//arsenal = new UArsenalMenu();
+
+	TSubclassOf<AMissionTracker> trackerClass = 0;
+	TArray<AActor*> trackerArray;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), trackerClass, trackerArray);
+	if (trackerArray.Num() != 0)
+	{
+		tracker = Cast<AMissionTracker>(trackerArray[0]);
+	}
+
+	//TSubclassOf<APlayerCharacter> playerClass = 0;
+	//TArray<AActor*> playerArray;
+	//UGameplayStatics::GetAllActorsOfClass(GetWorld(), playerClass, playerArray);
+	//if (playerArray.Num() != 0)
+	//{
+	//	player = Cast<APlayerCharacter>(playerArray[0]);
+	//}
 }
 
 // Called every frame

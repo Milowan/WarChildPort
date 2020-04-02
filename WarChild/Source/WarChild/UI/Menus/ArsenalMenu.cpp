@@ -3,9 +3,10 @@
 
 #include "ArsenalMenu.h"
 
-UArsenalMenu::UArsenalMenu(const FObjectInitializer& ObjectInitializer)
-	: Super(ObjectInitializer)
+UArsenalMenu::UArsenalMenu()
+	: Super()
 {
+
 }
 
 UArsenalMenu::~UArsenalMenu()
