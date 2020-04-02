@@ -16,7 +16,7 @@ class WARCHILD_API UArsenalMenu : public UBaseMenu
 	
 public:
 
-	UArsenalMenu();
+	UArsenalMenu(const FObjectInitializer& ObjectInitializer);
 	~UArsenalMenu();
 
 	virtual void OpenMenu();

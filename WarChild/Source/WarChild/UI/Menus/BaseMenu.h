@@ -19,7 +19,7 @@ private:
 
 public:
 
-	UBaseMenu();
+	//UBaseMenu();
 	UBaseMenu(const FObjectInitializer& ObjectInitializer);
 	~UBaseMenu();
 
