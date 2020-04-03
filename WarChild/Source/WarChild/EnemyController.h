@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
-#include "Characters/Enemies/EnemyCharacter.h"
+#include "Math/RandomStream.h"
+#include <time.h>
+#include "Types.h"
 #include "EnemyController.generated.h"
 
 /**
@@ -17,16 +19,24 @@ private:
 
 	GENERATED_BODY()
 
-	AEnemyCharacter* character;
+	FRandomStream* stream;
+	const float rangeMax = 200.0f;
+	EnemyState state;
 
 protected:
 
-	virtual void OnPossess(APawn* InPawn) override;
+	virtual void OnMoveCompleted(FAIRequestID request, const FPathFollowingResult& result) override;
+	virtual void BeginPlay() override;
 
 public:
 
 	AEnemyController();
 
 	virtual void Tick(float DeltaTime) override;
+
+	void SetRandomDestination();
+
+	void SetState(EnemyState nState);
+	EnemyState GetState();
 
 };

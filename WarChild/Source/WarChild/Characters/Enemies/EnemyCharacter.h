@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Characters/ArmedCharacter.h"
-#include "Types.h"
+#include "EnemyController.h"
 #include "EnemyCharacter.generated.h"
 
 /**
@@ -22,8 +22,10 @@ private:
 	float wanderRangeMax;
 	bool alert;
 	static int liveEnemies;
-	EnemyState state;
 
+protected:
+
+	virtual void BeginPlay() override;
 
 public:
 
@@ -34,9 +36,6 @@ public:
 	void CheckTarget();
 	void SetTarget(ABaseCharacter target);
 	void Die() override;
-
-	void SetState(EnemyState nState);
-	EnemyState GetState();
 
 
 };

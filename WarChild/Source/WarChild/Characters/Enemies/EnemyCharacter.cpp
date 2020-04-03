@@ -3,6 +3,13 @@
 
 #include "EnemyCharacter.h"
 
+void AEnemyCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	AIControllerClass = AEnemyController::StaticClass();
+}
+
 void AEnemyCharacter::CheckFire()
 {
 
@@ -37,14 +44,4 @@ void AEnemyCharacter::SetTarget(ABaseCharacter target)
 void AEnemyCharacter::Die()
 {
 
-}
-
-void AEnemyCharacter::SetState(EnemyState nState)
-{
-	state = nState;
-}
-
-EnemyState AEnemyCharacter::GetState()
-{
-	return state;
 }
