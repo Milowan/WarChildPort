@@ -38,3 +38,13 @@ void AEnemyCharacter::Die()
 {
 
 }
+
+void AEnemyCharacter::SetState(EnemyState nState)
+{
+	state = nState;
+}
+
+EnemyState AEnemyCharacter::GetState()
+{
+	return state;
+}
