@@ -105,7 +105,7 @@ void AWeapon::Fire()
 		if (bullet != NULL)
 		{
 			currentClip--;
-			bullet->Initialize(GetActorTransform(), GetActorForwardVector(), stats->GetFlightSpeed(), stats->GetDamage());
+			bullet->Initialize(GetActorLocation(), GetActorForwardVector(), stats->GetFlightSpeed(), stats->GetDamage());
 			cdTimer = 0.0f;
 		}
 	}

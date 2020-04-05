@@ -26,7 +26,7 @@ void AEnemyController::Tick(float DeltaTime)
 	if (GetState() == EnemyState::NONE)
 	{
 		SetState(EnemyState::WANDERING);
-		SetRandomDestination();
+		//SetRandomDestination();
 	}
 }
 

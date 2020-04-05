@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "CollisionQueryParams.h"
 #include "Characters/BaseCharacter.h"
+#include "Components/SphereComponent.h"
 #include "Bullet.generated.h"
 
 UCLASS()
@@ -20,6 +21,7 @@ private:
 	float lifeSpan;
 	float age;
 	FVector forward;
+	USphereComponent* root;
 
 protected:
 
@@ -31,7 +33,7 @@ public:
 	// Sets default values for this actor's properties
 	ABullet();
 
-	void Initialize(FTransform start, FVector direction, float speed, float dmg);
+	void Initialize(FVector start, FVector direction, float speed, float dmg);
 	void Despawn();
 
 	// Called every frame

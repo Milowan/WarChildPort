@@ -23,6 +23,8 @@ protected:
 
 public:
 
+	AArmedCharacter(const FObjectInitializer& ObjectInitializer);
+
 	UFUNCTION(BlueprintCallable)
 	void SetEquippedWeapon(AWeapon* weapon);
 	UFUNCTION(BlueprintCallable)

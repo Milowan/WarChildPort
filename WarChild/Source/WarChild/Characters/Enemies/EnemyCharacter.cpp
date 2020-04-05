@@ -3,11 +3,19 @@
 
 #include "EnemyCharacter.h"
 
+int AEnemyCharacter::liveEnemies = 0;
+
+AEnemyCharacter::AEnemyCharacter(const FObjectInitializer& ObjectInitializer) :
+	AArmedCharacter(ObjectInitializer)
+{
+	AIControllerClass = AEnemyController::StaticClass();
+}
+
 void AEnemyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	AIControllerClass = AEnemyController::StaticClass();
+	
 }
 
 void AEnemyCharacter::CheckFire()
@@ -28,7 +36,7 @@ void AEnemyCharacter::Chase()
 void AEnemyCharacter::Initialize(FTransform tf)
 {
 	SetActorTransform(tf);
-	Wander();
+	++liveEnemies;
 }
 
 void AEnemyCharacter::CheckTarget()
@@ -43,5 +51,10 @@ void AEnemyCharacter::SetTarget(ABaseCharacter target)
 
 void AEnemyCharacter::Die()
 {
+	--liveEnemies;
+}
 
+int AEnemyCharacter::GetLiveEnemyCount()
+{
+	return liveEnemies;
 }

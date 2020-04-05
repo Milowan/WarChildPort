@@ -9,6 +9,11 @@ ABullet::ABullet()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	lifeSpan = 2.0f;
+
+	root = CreateDefaultSubobject<USphereComponent>(TEXT("Root"));
+	RootComponent = root;
+	root->SetVisibility(false);
+	root->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 
 // Called when the game starts or when spawned
@@ -18,13 +23,15 @@ void ABullet::BeginPlay()
 	SetActorTickEnabled(false);
 }
 
-void ABullet::Initialize(FTransform start, FVector direction, float speed, float dmg)
+void ABullet::Initialize(FVector start, FVector direction, float speed, float dmg)
 {
 	SetActorTickEnabled(true);
-	SetActorTransform(start);
+	FHitResult hit;
+	SetActorLocation(start + (forward * 50.0f), false, &hit, ETeleportType::TeleportPhysics);
 	forward = direction;
 	flightSpeed = speed;
 	damage = dmg;
+	age = 0.0f;
 }
 
 void ABullet::Despawn()
@@ -40,10 +47,11 @@ void ABullet::Tick(float DeltaTime)
 	if (age < lifeSpan)
 	{
 		age += DeltaTime;
+		FVector position = GetActorLocation();
 
 		FHitResult hit;
 		FCollisionQueryParams TraceParams(FName(TEXT("")), false, GetOwner());
-		GetWorld()->LineTraceSingleByObjectType(OUT hit, GetActorLocation(), forward * flightSpeed, FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody), TraceParams);
+		GetWorld()->LineTraceSingleByObjectType(OUT hit, position, forward * flightSpeed, FCollisionObjectQueryParams(ECollisionChannel::ECC_OverlapAll_Deprecated), TraceParams);
 
 		AActor* aHit = hit.GetActor();
 
