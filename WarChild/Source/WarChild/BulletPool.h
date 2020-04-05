@@ -24,6 +24,7 @@ private:
 public:
 	~UBulletPool();
 	static UBulletPool* GetInstance();
+
 	UFUNCTION(BlueprintCallable)
 	static void Release();
 

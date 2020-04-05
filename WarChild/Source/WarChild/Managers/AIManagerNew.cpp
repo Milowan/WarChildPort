@@ -3,6 +3,8 @@
 
 #include "AIManagerNew.h"
 
+
+
 // Sets default values
 AAIManagerNew::AAIManagerNew()
 {
@@ -10,29 +12,14 @@ AAIManagerNew::AAIManagerNew()
 	PrimaryActorTick.bCanEverTick = true;
 	poolSize = 30;
 	aiPool.SetNum(poolSize);
-	for (int i = 0; i < aiPool.Num(); i++)
-	{
-		if (i < poolSize / 3)
-		{
-			// Change these ifs to create new versions of this bp not just copy the bp
-			aiPool[i] = basicRiflemanBP;
-		}
-		else if (i < poolSize * (2 / 3))
-		{
-			aiPool[i] = advancedRiflemanBP;
-		}
-		else
-		{
-			aiPool[i] = machinePistolmanBP;
-		}
-	}
 
-	spawnPoints.SetNum(aiPool.Num());
-	for (int i = 0; i < spawnPoints.Num(); i++)
-	{
-		// Possibly convert this to spawn points being children of this manager instead of just the aiPool.Num()
-		//spawnPoints[i].SetLocation(aiPool[i]->GetActorLocation()); //I dont know why this line broke, lets see if I can run the build now?
-	}
+	basicRiflemanBP = 0;
+	advancedRiflemanBP = 0;
+	machinePistolmanBP = 0;
+	spawnRotation = FRotator(0, 180, 0);
+
+	spawnParams = FActorSpawnParameters();
+	spawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 }
 
 AAIManagerNew::~AAIManagerNew()
@@ -41,13 +28,9 @@ AAIManagerNew::~AAIManagerNew()
 
 void AAIManagerNew::StartWithTarget(ACharacter* character)
 {
-	initialTarget = character;
+	//initialTarget = character;
 }
 
-TArray<FTransform> AAIManagerNew::GetSpawnPoints()
-{
-	return spawnPoints;
-}
 
 AActor * AAIManagerNew::GetInactiveEnemy()
 {
@@ -73,6 +56,7 @@ int AAIManagerNew::GetPoolSize()
 void AAIManagerNew::BeginPlay()
 {
 	Super::BeginPlay();
+	GenerateAI();
 	
 }
 
@@ -83,3 +67,47 @@ void AAIManagerNew::Tick(float DeltaTime)
 
 }
 
+void AAIManagerNew::GenerateAI()
+{
+	int totalSize = aiPool.Num();
+	for (int i = 0; i < totalSize; i++)
+	{
+		if (i < (totalSize / 3))
+		{
+			if (basicRiflemanBP)
+			{
+				UWorld* world = GetWorld();
+				if (world)
+				{
+					FVector spawnPos = FVector(0, i * 40, 500);
+					aiPool[i] = world->SpawnActor<ACharacter>(basicRiflemanBP, spawnPos, spawnRotation, spawnParams);
+				}
+			}
+		}
+		else if (i < (totalSize * 2 / 3))
+		{
+			if (advancedRiflemanBP)
+			{
+				UWorld* world = GetWorld();
+				if (world)
+				{
+					FVector spawnPos = FVector(0, (i * 40) + 60, 500);
+					aiPool[i] = world->SpawnActor<ACharacter>(advancedRiflemanBP, spawnPos, spawnRotation, spawnParams);
+				}
+			}
+		}
+		else
+		{
+			if (machinePistolmanBP)
+			{
+				UWorld* world = GetWorld();
+				if (world)
+				{
+					FVector spawnPos = FVector(0, (i * 40) + 120, 500);
+					aiPool[i] = world->SpawnActor<ACharacter>(machinePistolmanBP, spawnPos, spawnRotation, spawnParams);
+				}
+			}
+		}
+	}
+
+}

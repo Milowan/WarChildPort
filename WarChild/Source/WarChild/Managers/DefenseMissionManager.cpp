@@ -58,8 +58,8 @@ void ADefenseMissionManager::Tick(float DeltaTime)
 			AEnemyCharacter* enemy = Cast<AEnemyCharacter>(aiManager->GetInactiveEnemy());
 			if (enemy)
 			{
-				TArray<FTransform> spawnPoints = aiManager->GetSpawnPoints();
-				enemy->Initialize(spawnPoints[rand() + spawnPoints.Num() - 1]);
+				//TArray<FTransform> spawnPoints = aiManager->GetSpawnPoints();
+				//enemy->Initialize(spawnPoints[rand() + spawnPoints.Num() - 1]);
 				enemy->Spawn();
 				if (spawnCount == maxSpawn - 1)
 				{
