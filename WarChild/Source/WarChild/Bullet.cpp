@@ -51,7 +51,7 @@ void ABullet::Tick(float DeltaTime)
 
 		FHitResult hit;
 		FCollisionQueryParams TraceParams(FName(TEXT("")), false, GetOwner());
-		GetWorld()->LineTraceSingleByObjectType(OUT hit, position, forward * flightSpeed, FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody), TraceParams);
+		GetWorld()->LineTraceSingleByObjectType(OUT hit, position, forward * flightSpeed, FCollisionObjectQueryParams(ECollisionChannel::ECC_OverlapAll_Deprecated), TraceParams);
 
 		AActor* aHit = hit.GetActor();
 
