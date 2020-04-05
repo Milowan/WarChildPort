@@ -4,6 +4,10 @@
 #include "ArmedCharacter.h"
 
 
+AArmedCharacter::AArmedCharacter(const FObjectInitializer& ObjectInitializer) :
+	ABaseCharacter(ObjectInitializer)
+{}
+
 void AArmedCharacter::PullTrigger()
 {
 	if (equippedWeapon != NULL)

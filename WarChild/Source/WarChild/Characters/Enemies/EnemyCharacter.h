@@ -29,6 +29,8 @@ protected:
 
 public:
 
+	AEnemyCharacter(const FObjectInitializer& ObjectInitializer);
+
 	void CheckFire();
 	void Wander();
 	void Chase();
@@ -37,5 +39,6 @@ public:
 	void SetTarget(ABaseCharacter target);
 	void Die() override;
 
+	static int GetLiveEnemyCount();
 
 };
