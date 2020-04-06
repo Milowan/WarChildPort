@@ -62,7 +62,7 @@ void AWeapon::Destroyed()
 void AWeapon::Initialize()
 {
 	SetStats();
-	UBulletPool* pool = UBulletPool::GetInstance();
+	pool = UBulletPool::GetInstance();
 	if (pool->GetPoolSize() <= 0)
 	{
 		pool->SetWorld(GetWorld());
@@ -100,7 +100,7 @@ void AWeapon::Fire()
 	//shoot bullet
 	if (currentClip > 0)
 	{
-		ABullet* bullet = UBulletPool::GetInstance()->GetFreeBullet();
+		ABullet* bullet = pool->GetFreeBullet();
 
 		if (bullet != NULL)
 		{

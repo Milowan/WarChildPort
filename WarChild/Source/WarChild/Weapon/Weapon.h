@@ -23,6 +23,8 @@ private:
 	float cdTimer;
 	int currentClip;
 
+	UBulletPool* pool;
+
 	USphereComponent* root;
 
 protected:
