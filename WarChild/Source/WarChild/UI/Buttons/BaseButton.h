@@ -30,6 +30,7 @@ public:
 
 protected:
 
+	UFUNCTION(BlueprintCallable)
 	virtual void Activate();
 
 
