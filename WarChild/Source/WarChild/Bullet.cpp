@@ -27,7 +27,7 @@ void ABullet::Initialize(FVector start, FVector direction, float speed, float dm
 {
 	SetActorTickEnabled(true);
 	FHitResult hit;
-	SetActorLocation(start + (forward * 50.0f), false, &hit, ETeleportType::TeleportPhysics);
+	SetActorLocation(start + (direction * 100.0f), false, &hit, ETeleportType::TeleportPhysics);
 	forward = direction;
 	flightSpeed = speed;
 	damage = dmg;
@@ -51,7 +51,10 @@ void ABullet::Tick(float DeltaTime)
 
 		FHitResult hit;
 		FCollisionQueryParams TraceParams(FName(TEXT("")), false, GetOwner());
-		GetWorld()->LineTraceSingleByObjectType(OUT hit, position, forward * flightSpeed, FCollisionObjectQueryParams(ECollisionChannel::ECC_OverlapAll_Deprecated), TraceParams);
+
+		DrawDebugLine(GetWorld(), position, position + forward * flightSpeed, FColor(0, 0, 0, 1), true, 5.0f, (uint8)'\000', 10.0f);
+
+		GetWorld()->LineTraceSingleByObjectType(OUT hit, position, position + forward * flightSpeed, FCollisionObjectQueryParams(ECollisionChannel::ECC_Pawn), TraceParams);
 
 		AActor* aHit = hit.GetActor();
 
@@ -63,6 +66,16 @@ void ABullet::Tick(float DeltaTime)
 			{
 				character->Damaged(damage);
 			}
+			Despawn();
+		}
+
+		aHit = NULL;
+
+		GetWorld()->LineTraceSingleByObjectType(OUT hit, position, position + forward * flightSpeed, FCollisionObjectQueryParams(ECollisionChannel::ECC_OverlapAll_Deprecated), TraceParams);
+		aHit = hit.GetActor();
+
+		if (aHit != NULL)
+		{
 			Despawn();
 		}
 
