@@ -34,7 +34,7 @@ public:
 	// Sets default values for this actor's properties
 	ABullet();
 
-	void Initialize(FVector start, FVector direction, float speed, float dmg);
+	void Initialize(AActor* currentOwner, float speed, float dmg);
 	void Despawn();
 
 	// Called every frame

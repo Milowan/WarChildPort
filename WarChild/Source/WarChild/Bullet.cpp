@@ -23,15 +23,16 @@ void ABullet::BeginPlay()
 	SetActorTickEnabled(false);
 }
 
-void ABullet::Initialize(FVector start, FVector direction, float speed, float dmg)
+void ABullet::Initialize(AActor* weapon, float speed, float dmg)
 {
 	SetActorTickEnabled(true);
 	FHitResult hit;
-	SetActorLocation(start + (direction * 100.0f), false, &hit, ETeleportType::TeleportPhysics);
-	forward = direction;
+	forward = weapon->GetActorForwardVector();
+	SetActorLocation(weapon->GetActorLocation() + (forward * 50), false, &hit, ETeleportType::TeleportPhysics);
 	flightSpeed = speed;
 	damage = dmg;
 	age = 0.0f;
+	SetOwner(weapon->GetOwner());
 }
 
 void ABullet::Despawn()
