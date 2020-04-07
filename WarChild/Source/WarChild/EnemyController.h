@@ -4,8 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
-#include "Math/RandomStream.h"
-#include <time.h>
 #include "Types.h"
 #include "EnemyController.generated.h"
 
@@ -20,8 +18,8 @@ private:
 	GENERATED_BODY()
 
 	FRandomStream* stream;
-	const float rangeMax = 200.0f;
 	EnemyState state;
+	float rangeMax;
 
 protected:
 
@@ -34,9 +32,16 @@ public:
 
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
 	void SetRandomDestination();
 
 	void SetState(EnemyState nState);
 	EnemyState GetState();
+
+	UFUNCTION(BlueprintCallable)
+	void SetRangeMax(float value);
+
+	UFUNCTION(BlueprintCallable)
+	float GetRangeMax();
 
 };

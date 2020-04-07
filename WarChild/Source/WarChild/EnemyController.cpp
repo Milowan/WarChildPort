@@ -5,6 +5,7 @@
 
 AEnemyController::AEnemyController()
 {
+	rangeMax = 2000.0f;
 }
 
 void AEnemyController::OnMoveCompleted(FAIRequestID request, const FPathFollowingResult& result)
@@ -18,7 +19,6 @@ void AEnemyController::OnMoveCompleted(FAIRequestID request, const FPathFollowin
 void AEnemyController::BeginPlay()
 {
 	Super::BeginPlay();
-	stream = new FRandomStream(time(NULL));
 }
 
 void AEnemyController::Tick(float DeltaTime)
@@ -26,15 +26,8 @@ void AEnemyController::Tick(float DeltaTime)
 	if (GetState() == EnemyState::NONE)
 	{
 		SetState(EnemyState::WANDERING);
-		//SetRandomDestination();
+		SetRandomDestination();
 	}
-}
-
-void AEnemyController::SetRandomDestination()
-{
-	FVector destination = FVector(stream->FRandRange(0, rangeMax), stream->FRandRange(0, rangeMax), stream->FRandRange(0, rangeMax));
-	destination += GetPawn()->GetActorLocation();
-	MoveToLocation(destination, 50.0f);
 }
 
 void AEnemyController::SetState(EnemyState nState)
@@ -45,4 +38,14 @@ void AEnemyController::SetState(EnemyState nState)
 EnemyState AEnemyController::GetState()
 {
 	return state;
+}
+
+void AEnemyController::SetRangeMax(float value)
+{
+	rangeMax = value;
+}
+
+float AEnemyController::GetRangeMax()
+{
+	return rangeMax;
 }

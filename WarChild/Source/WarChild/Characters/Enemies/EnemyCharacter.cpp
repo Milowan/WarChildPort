@@ -7,9 +7,7 @@ int AEnemyCharacter::liveEnemies = 0;
 
 AEnemyCharacter::AEnemyCharacter(const FObjectInitializer& ObjectInitializer) :
 	AArmedCharacter(ObjectInitializer)
-{
-	AIControllerClass = AEnemyController::StaticClass();
-}
+{}
 
 void AEnemyCharacter::BeginPlay()
 {
