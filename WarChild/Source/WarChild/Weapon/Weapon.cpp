@@ -119,3 +119,8 @@ void AWeapon::Reload()
 		reloading = false;
 	}
 }
+
+UStaticMeshComponent* AWeapon::GetMesh()
+{
+	return mesh;
+}

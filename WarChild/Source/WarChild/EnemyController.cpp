@@ -23,10 +23,13 @@ void AEnemyController::BeginPlay()
 
 void AEnemyController::Tick(float DeltaTime)
 {
-	if (GetState() == EnemyState::NONE)
+	if (GetPawn()->IsActorTickEnabled())
 	{
-		SetState(EnemyState::WANDERING);
-		SetRandomDestination();
+		if (GetState() == EnemyState::NONE)
+		{
+			SetState(EnemyState::WANDERING);
+			SetRandomDestination();
+		}
 	}
 }
 

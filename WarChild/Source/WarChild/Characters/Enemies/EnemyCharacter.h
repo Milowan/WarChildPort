@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Characters/ArmedCharacter.h"
 #include "EnemyController.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "EnemyCharacter.generated.h"
 
 /**
