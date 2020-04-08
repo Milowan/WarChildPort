@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "AIController.h"
 #include "Types.h"
+#include "Characters/Enemies/EnemyCharacter.h"
+#include "Stats/CharacterStats/EnemyStats.h"
 #include "EnemyController.generated.h"
 
 /**
@@ -19,7 +21,13 @@ private:
 
 	FRandomStream* stream;
 	EnemyState state;
+	float FoV;
+	float sightRange;
 	float rangeMax;
+	float scanCD;
+	float scanTimer;
+	ABaseCharacter* target;
+
 
 protected:
 

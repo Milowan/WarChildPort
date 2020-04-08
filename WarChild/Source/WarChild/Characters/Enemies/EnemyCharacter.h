@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Characters/ArmedCharacter.h"
-#include "EnemyController.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "EnemyCharacter.generated.h"
 
@@ -32,12 +31,7 @@ public:
 
 	AEnemyCharacter(const FObjectInitializer& ObjectInitializer);
 
-	void CheckFire();
-	void Wander();
-	void Chase();
 	void Initialize(FTransform tf);
-	void CheckTarget();
-	void SetTarget(ABaseCharacter target);
 	void Die() override;
 
 	static int GetLiveEnemyCount();
