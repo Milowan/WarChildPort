@@ -21,21 +21,6 @@ void AEnemyCharacter::BeginPlay()
 	
 }
 
-void AEnemyCharacter::CheckFire()
-{
-
-}
-
-void AEnemyCharacter::Wander()
-{
-
-}
-
-void AEnemyCharacter::Chase()
-{
-
-}
-
 void AEnemyCharacter::Initialize(FTransform tf)
 {
 	SetActorTransform(tf);
@@ -45,16 +30,6 @@ void AEnemyCharacter::Initialize(FTransform tf)
 	mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	equippedWeapon->GetMesh()->SetVisibility(true);
 	++liveEnemies;
-}
-
-void AEnemyCharacter::CheckTarget()
-{
-
-}
-
-void AEnemyCharacter::SetTarget(ABaseCharacter target)
-{
-
 }
 
 void AEnemyCharacter::Die()
