@@ -65,14 +65,6 @@ void ABaseCharacter::MoveRight(float Value)
 	}
 }
 
-void ABaseCharacter::Spawn()
-{
-	FHitResult output;
-	SetActorLocation(spawnPoint, false, &output, ETeleportType::TeleportPhysics);
-	active = true;
-	stats->SetCurrentHP(stats->GetMaxHealth());
-}
-
 void ABaseCharacter::Damaged(float amount)
 {
 	if (stats->ReduceCurrentHP(amount) <= 0)
@@ -109,16 +101,6 @@ void ABaseCharacter::UnPause()
 {
 	if (active)
 		SetActorTickEnabled(true);
-}
-
-void ABaseCharacter::GameOver()
-{
-	SetActorTickEnabled(false);
-}
-
-void ABaseCharacter::GameStart()
-{
-	SetActorTickEnabled(true);
 }
 
 CharacterStats* ABaseCharacter::GetStats()

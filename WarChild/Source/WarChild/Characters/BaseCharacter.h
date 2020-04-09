@@ -36,8 +36,6 @@ private:
 
 	void Pause();
 	void UnPause();
-	void GameOver();
-	void GameStart();
 
 
 protected:
@@ -72,7 +70,6 @@ public:
 	 */
 	void LookUpAtRate(float Rate);
 
-	void Spawn();
 	void Damaged(float amount);
 	virtual void Die() PURE_VIRTUAL(ABaseCharacter::Die, ;);
 

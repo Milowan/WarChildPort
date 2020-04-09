@@ -23,13 +23,15 @@ void AEnemyCharacter::BeginPlay()
 
 void AEnemyCharacter::Initialize(FTransform tf)
 {
-	SetActorTransform(tf);
+	FHitResult hit;
+	SetActorTransform(tf, false, &hit, ETeleportType::TeleportPhysics);
 	SetActorTickEnabled(true);
 	active = true;
 	USkeletalMeshComponent* mesh = GetMesh();
 	mesh->SetVisibility(true);
 	mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	equippedWeapon->GetMesh()->SetVisibility(true);
+	stats->SetCurrentHP(stats->GetMaxHealth());
 	++liveEnemies;
 }
 
