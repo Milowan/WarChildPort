@@ -5,9 +5,12 @@
 
 // Sets default values
 AMissionManager::AMissionManager()
+	: Super()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	playerSpawnPoint = FVector();
 }
 
 AMissionManager::~AMissionManager()
@@ -19,7 +22,7 @@ void AMissionManager::BeginPlay()
 {
 	Super::BeginPlay();
 
-	TSubclassOf<APlayerCharacter> playerClass = 0;
+	TSubclassOf<APlayerCharacter> playerClass = APlayerCharacter::StaticClass();
 	TArray<AActor*> playerArray;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), playerClass, playerArray);
 	if (playerArray.Num() != 0)
@@ -28,7 +31,7 @@ void AMissionManager::BeginPlay()
 		player->SetActorLocation(playerSpawnPoint, false);
 	}
 
-	TSubclassOf<AAIManagerNew> aiManagerClass = 0;
+	TSubclassOf<AAIManagerNew> aiManagerClass = AAIManagerNew::StaticClass();
 	TArray<AActor*> aiManagerArray;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), aiManagerClass, aiManagerArray);
 	if (aiManagerArray.Num() != 0)

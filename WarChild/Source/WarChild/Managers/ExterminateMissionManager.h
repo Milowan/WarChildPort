@@ -28,7 +28,6 @@ public:
 	AExterminateMissionManager();
 	~AExterminateMissionManager();
 
-
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	// Called every frame

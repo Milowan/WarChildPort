@@ -16,11 +16,23 @@ class WARCHILD_API AMissionManager : public AActor
 {
 	GENERATED_BODY()
 	
+
 protected:
-	FVector playerSpawnPoint = FVector();
+
+	UPROPERTY(EditAnywhere, Meta = (makeEditWidget = true), Category = "Spawns")
+	FVector playerSpawnPoint;
+
+	UPROPERTY(EditAnywhere, Meta = (makeEditWidget = true), Category = "Spawns")
+	TArray<FVector> enemySpawnPoints;
+
+
+	UPROPERTY(EditAnywhere, Category = "Spawns")
+	TSubclassOf<class APlayerCharacter> playerBP;
+
 	APlayerCharacter* player = 0;
 	AAIManagerNew* aiManager = 0;
 	//UUIManager* uiManager = 0;
+
 
 public:	
 	// Sets default values for this actor's properties

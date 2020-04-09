@@ -4,6 +4,7 @@
 #include "ExterminateMissionManager.h"
 
 AExterminateMissionManager::AExterminateMissionManager()
+	: Super()
 {
 	tickNum = 0;
 	tickSpacer = 5;

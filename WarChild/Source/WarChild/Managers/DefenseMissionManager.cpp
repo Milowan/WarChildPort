@@ -7,8 +7,9 @@
 
 
 ADefenseMissionManager::ADefenseMissionManager()
+	: Super()
 {
-	playerSpawnPoint = FVector(0, 0, 10);
+	//playerSpawnPoint = FVector(0, 0, 10);
 	waveCooldown = 5;
 	cooldownTimer = 0;
 	spawnCooldown = 3;

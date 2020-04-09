@@ -49,7 +49,8 @@ AActor * AAIManagerNew::GetInactiveEnemy()
 
 int AAIManagerNew::GetPoolSize()
 {
-	return aiPool.Num();
+	int temp = aiPool.Num();
+	return temp;
 }
 
 // Called when the game starts or when spawned

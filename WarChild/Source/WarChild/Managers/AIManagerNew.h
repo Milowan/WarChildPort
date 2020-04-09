@@ -24,15 +24,6 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Spawn")
 		FRotator spawnRotation;
 
-	//UPROPERTY(EditAnywhere, Category = "Spawn")
-	//	UArrowComponent* basicRifleSpawnPoint;
-
-	//UPROPERTY(EditAnywhere, Category = "Spawn")
-	//	USphereComponent* advRifleSpawnPoint;
-
-	//UPROPERTY(EditAnywhere, Category = "Spawn")
-	//	USphereComponent* machPistolSpawnPoint;
-
 
 private:
 
