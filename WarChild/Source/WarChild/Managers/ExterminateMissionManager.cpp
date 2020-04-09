@@ -42,9 +42,11 @@ void AExterminateMissionManager::Tick(float DeltaTime)
 			AEnemyCharacter* enemy = Cast<AEnemyCharacter>(aiManager->GetInactiveEnemy());
 			if (enemy)
 			{
-				//TArray<FTransform> spawnPoints = aiManager->GetSpawnPoints();
-				//enemy->Initialize(spawnPoints[rand() + spawnPoints.Num() - 1]);
-				enemy->Spawn();
+				int i = rand() + enemySpawnPoints.Num() - 1;
+				if (i < 0 || i > (enemySpawnPoints.Num() - 1))
+					i = 0;
+				enemy->SetSpawnPoint(enemySpawnPoints[i]);
+				enemy->Initialize(FTransform(enemySpawnPoints[i]));
 			}
 		}
 	}

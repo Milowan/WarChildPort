@@ -37,7 +37,7 @@ AActor * AAIManagerNew::GetInactiveEnemy()
 	AActor* tempEnemy = 0;
 	for (int i = 0; i < aiPool.Num(); i++)
 	{
-		if (aiPool[i]->IsActorTickEnabled())
+		if (!aiPool[i]->IsActorTickEnabled())
 		{
 			tempEnemy = aiPool[i];
 			// tempEnemy->SetTarget(initialTarget);
@@ -82,6 +82,7 @@ void AAIManagerNew::GenerateAI()
 				{
 					FVector spawnPos = FVector(0, i * 40, 500);
 					aiPool[i] = world->SpawnActor<ACharacter>(basicRiflemanBP, spawnPos, spawnRotation, spawnParams);
+					aiPool[i]->SetActorTickEnabled(false);
 				}
 			}
 		}
@@ -94,6 +95,7 @@ void AAIManagerNew::GenerateAI()
 				{
 					FVector spawnPos = FVector(0, (i * 40) + 60, 500);
 					aiPool[i] = world->SpawnActor<ACharacter>(advancedRiflemanBP, spawnPos, spawnRotation, spawnParams);
+					aiPool[i]->SetActorTickEnabled(false);
 				}
 			}
 		}
@@ -106,6 +108,7 @@ void AAIManagerNew::GenerateAI()
 				{
 					FVector spawnPos = FVector(0, (i * 40) + 120, 500);
 					aiPool[i] = world->SpawnActor<ACharacter>(machinePistolmanBP, spawnPos, spawnRotation, spawnParams);
+					aiPool[i]->SetActorTickEnabled(false);
 				}
 			}
 		}
