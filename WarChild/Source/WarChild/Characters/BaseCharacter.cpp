@@ -111,6 +111,16 @@ void ABaseCharacter::UnPause()
 		SetActorTickEnabled(true);
 }
 
+void ABaseCharacter::GameOver()
+{
+	SetActorTickEnabled(false);
+}
+
+void ABaseCharacter::GameStart()
+{
+	SetActorTickEnabled(true);
+}
+
 CharacterStats* ABaseCharacter::GetStats()
 {
 	return stats;

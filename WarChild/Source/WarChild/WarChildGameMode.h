@@ -6,6 +6,8 @@
 #include "GameFramework/GameModeBase.h"
 #include "WarChildGameMode.generated.h"
 
+
+
 UCLASS(minimalapi)
 class AWarChildGameMode : public AGameModeBase
 {

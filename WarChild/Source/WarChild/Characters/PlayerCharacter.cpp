@@ -105,7 +105,12 @@ void APlayerCharacter::SetStats()
 
 void APlayerCharacter::Die()
 {
+	AWarchildGameState* state = Cast<AWarchildGameState>(GetWorld()->GetGameState());
 
+	if (state != NULL)
+	{
+		state->OnGameOver.Broadcast();
+	}
 }
 
 void APlayerCharacter::CloseCurrentMenu()

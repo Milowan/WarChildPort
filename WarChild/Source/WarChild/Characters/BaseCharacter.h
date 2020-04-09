@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Stats/CharacterStats/CharacterStats.h"
+#include "WarchildGameState.h"
 #include "BaseCharacter.generated.h"
 
 UCLASS(abstract)
@@ -35,6 +36,8 @@ private:
 
 	void Pause();
 	void UnPause();
+	void GameOver();
+	void GameStart();
 
 
 protected:

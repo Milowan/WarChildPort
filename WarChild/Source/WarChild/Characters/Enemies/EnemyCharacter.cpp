@@ -25,6 +25,7 @@ void AEnemyCharacter::Initialize(FTransform tf)
 {
 	SetActorTransform(tf);
 	SetActorTickEnabled(true);
+	active = true;
 	USkeletalMeshComponent* mesh = GetMesh();
 	mesh->SetVisibility(true);
 	mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
@@ -35,6 +36,7 @@ void AEnemyCharacter::Initialize(FTransform tf)
 void AEnemyCharacter::Die()
 {
 	SetActorTickEnabled(false);
+	active = false;
 	USkeletalMeshComponent* mesh = GetMesh();
 	mesh->SetVisibility(false);
 	mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);

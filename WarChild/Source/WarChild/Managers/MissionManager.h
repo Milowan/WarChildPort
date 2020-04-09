@@ -7,7 +7,6 @@
 #include "Characters/PlayerCharacter.h"
 #include "Characters/Enemies/EnemyCharacter.h"
 #include "Managers/AIManagerNew.h"
-#include "Managers/GameEventManager.h"
 //#include "Managers/UIManager.h"
 #include "Kismet/GameplayStatics.h"
 #include "MissionManager.generated.h"
@@ -21,7 +20,6 @@ protected:
 	FVector playerSpawnPoint = FVector();
 	APlayerCharacter* player = 0;
 	AAIManagerNew* aiManager = 0;
-	UGameEventManager* gEventManager = 0;
 	//UUIManager* uiManager = 0;
 
 public:	

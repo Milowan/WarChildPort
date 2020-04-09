@@ -12,5 +12,4 @@ enum EnemyState
     NONE,
     WANDERING,
     CHASING,
-    SHOOTING
 };
