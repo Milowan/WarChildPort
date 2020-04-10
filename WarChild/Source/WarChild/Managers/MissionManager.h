@@ -25,10 +25,6 @@ protected:
 	UPROPERTY(EditAnywhere, Meta = (makeEditWidget = true), Category = "Spawns")
 	TArray<FVector> enemySpawnPoints;
 
-
-	UPROPERTY(EditAnywhere, Category = "Spawns")
-	TSubclassOf<class APlayerCharacter> playerBP;
-
 	APlayerCharacter* player = 0;
 	AAIManagerNew* aiManager = 0;
 	//UUIManager* uiManager = 0;

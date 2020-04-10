@@ -61,7 +61,6 @@ void ADefenseMissionManager::Tick(float DeltaTime)
 			{
 				//TArray<FTransform> spawnPoints = aiManager->GetSpawnPoints();
 				//enemy->Initialize(spawnPoints[rand() + spawnPoints.Num() - 1]);
-				enemy->Spawn();
 				if (spawnCount == maxSpawn - 1)
 				{
 					//enemy->IsLast();

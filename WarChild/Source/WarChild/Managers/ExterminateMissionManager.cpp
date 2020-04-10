@@ -45,8 +45,8 @@ void AExterminateMissionManager::Tick(float DeltaTime)
 				int i = rand() + enemySpawnPoints.Num() - 1;
 				if (i < 0 || i > (enemySpawnPoints.Num() - 1))
 					i = 0;
-				enemy->SetSpawnPoint(enemySpawnPoints[i]);
 				enemy->Initialize(FTransform(enemySpawnPoints[i]));
+				enemy->SetActorLocation(enemySpawnPoints[i]);
 			}
 		}
 	}
