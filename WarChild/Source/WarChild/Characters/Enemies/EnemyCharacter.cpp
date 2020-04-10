@@ -21,7 +21,7 @@ void AEnemyCharacter::BeginPlay()
 	
 }
 
-void AEnemyCharacter::Initialize(FTransform tf)
+void AEnemyCharacter::Place(FTransform tf)
 {
 	FHitResult hit;
 	SetActorTransform(tf, false, &hit, ETeleportType::TeleportPhysics);

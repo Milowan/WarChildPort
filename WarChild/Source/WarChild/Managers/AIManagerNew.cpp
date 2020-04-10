@@ -73,11 +73,11 @@ void AAIManagerNew::GenerateAI()
 	int totalSize = aiPool.Num();
 	for (int i = 0; i < totalSize; i++)
 	{
+		UWorld* world = GetWorld();
 		if (i < (totalSize / 3))
 		{
 			if (basicRiflemanBP)
 			{
-				UWorld* world = GetWorld();
 				if (world)
 				{
 					FVector spawnPos = FVector(0, i * 40, 500);
@@ -90,7 +90,6 @@ void AAIManagerNew::GenerateAI()
 		{
 			if (advancedRiflemanBP)
 			{
-				UWorld* world = GetWorld();
 				if (world)
 				{
 					FVector spawnPos = FVector(0, (i * 40) + 60, 500);
@@ -103,7 +102,6 @@ void AAIManagerNew::GenerateAI()
 		{
 			if (machinePistolmanBP)
 			{
-				UWorld* world = GetWorld();
 				if (world)
 				{
 					FVector spawnPos = FVector(0, (i * 40) + 120, 500);
@@ -111,6 +109,10 @@ void AAIManagerNew::GenerateAI()
 					aiPool[i]->SetActorTickEnabled(false);
 				}
 			}
+		}
+		if (world)
+		{
+			(world->SpawnActor<AController>(controllerBP))->Possess(Cast<APawn>(aiPool[i]));
 		}
 	}
 

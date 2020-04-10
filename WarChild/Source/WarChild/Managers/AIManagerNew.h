@@ -40,6 +40,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Pool")
 		TSubclassOf<class ACharacter> machinePistolmanBP;
 
+	UPROPERTY(EditAnywhere, Category = "Controller")
+		TSubclassOf<class AController> controllerBP;
+
 	UPROPERTY(EditAnywhere, Category = "Pool")
 	TArray<AActor*> aiPool;
 

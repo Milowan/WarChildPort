@@ -31,7 +31,7 @@ public:
 
 	AEnemyCharacter(const FObjectInitializer& ObjectInitializer);
 
-	void Initialize(FTransform tf);
+	void Place(FTransform tf);
 	void Die() override;
 
 	static int GetLiveEnemyCount();
