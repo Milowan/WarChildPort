@@ -19,10 +19,6 @@ void AEnemyController::OnMoveCompleted(FAIRequestID request, const FPathFollowin
 	{
 		SetRandomDestination();
 	}
-	else if (GetState() == EnemyState::CHASING)
-	{
-		MoveToActor(target);
-	}
 }
 
 void AEnemyController::BeginPlay()
@@ -54,7 +50,7 @@ void AEnemyController::Tick(float DeltaTime)
 						direction += pawn->GetActorForwardVector();
 						FHitResult hit;
 						FCollisionQueryParams TraceParams(FName(TEXT("")), false, GetOwner());
-						GetWorld()->LineTraceSingleByObjectType(OUT hit, pawn->GetActorLocation(), pawn->GetActorLocation() + (direction * sightRange), FCollisionObjectQueryParams(ECollisionChannel::ECC_Pawn), TraceParams);
+						GetWorld()->LineTraceSingleByObjectType(OUT hit, pawn->GetActorLocation() + (direction * 100.0f), pawn->GetActorLocation() + (direction * sightRange), FCollisionObjectQueryParams(ECollisionChannel::ECC_Pawn), TraceParams);
 
 						AActor* aHit = hit.GetActor();
 
@@ -68,7 +64,7 @@ void AEnemyController::Tick(float DeltaTime)
 								{
 									target = cHit;
 									SetState(EnemyState::CHASING);
-									MoveToActor(target);
+									break;
 								}
 							}
 						}
@@ -87,6 +83,10 @@ void AEnemyController::Tick(float DeltaTime)
 				if (FVector::Distance(GetPawn()->GetActorLocation(), target->GetActorLocation()) <= stats->GetRange())
 				{
 					character->PullTrigger();
+				}
+				else
+				{
+					MoveToActor(target, stats->GetRange() / 2);
 				}
 			}
 		}

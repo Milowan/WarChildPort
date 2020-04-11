@@ -8,5 +8,5 @@ MachinePistolerStats::MachinePistolerStats()
 	maxHealth = 50.0f;
 	movSpeed = 7.5f;
 	armour = 1.0f;
-	effectiveRange = 100.0f;
+	effectiveRange = 1000.0f;
 }

@@ -8,6 +8,6 @@ AdvancedRifleManStats::AdvancedRifleManStats()
 	maxHealth = 100.0f;
 	movSpeed = 2.5f;
 	armour = 1.75f;
-	effectiveRange = 300.0f;
+	effectiveRange = 3000.0f;
 	currentHP = maxHealth;
 }
