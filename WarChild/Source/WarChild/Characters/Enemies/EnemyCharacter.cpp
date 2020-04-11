@@ -13,11 +13,11 @@ void AEnemyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//SetActorTickEnabled(false);
+	SetActorTickEnabled(false);
 	USkeletalMeshComponent* mesh = GetMesh();
-	//mesh->SetVisibility(false);
-	//mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	//equippedWeapon->GetMesh()->SetVisibility(false);
+	mesh->SetVisibility(false);
+	mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	equippedWeapon->GetMesh()->SetVisibility(false);
 	
 }
 

@@ -7,7 +7,7 @@ MachinePistolStats::MachinePistolStats()
 {
 	atkSp = 6.5f;
 	dmg = 3.5f;
-	flightSp = 90.0f;
+	flightSp = 300.0f;
 	reloadSp = 1.0f;
 	accuracy = 0.955f;
 	clipSize = 60;
