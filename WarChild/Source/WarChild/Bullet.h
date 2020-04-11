@@ -7,7 +7,6 @@
 #include "CollisionQueryParams.h"
 #include "Characters/BaseCharacter.h"
 #include "Components/SphereComponent.h"
-#include "DrawDebugHelpers.h"
 #include "Bullet.generated.h"
 
 UCLASS()

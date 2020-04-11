@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "Stats/CharacterStats/CharacterStats.h"
 #include "WarchildGameState.h"
+#include "Math/UnrealMathUtility.h"
 #include "BaseCharacter.generated.h"
 
 UCLASS(abstract)

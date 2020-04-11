@@ -72,6 +72,7 @@ void AEnemyController::Tick(float DeltaTime)
 								}
 							}
 						}
+						angle += (FoV / 2.0f);
 					}
 				}
 				else

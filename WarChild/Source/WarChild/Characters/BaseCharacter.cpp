@@ -83,6 +83,12 @@ void ABaseCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	SetActorRotation(FRotator(FMath::ClampAngle(GetActorRotation().Pitch, -30.0f, 30.0f), GetActorRotation().Yaw, GetActorRotation().Roll));
+
+	if (GetActorLocation().Z < -2000.0f)
+	{
+		Die();
+	}
 }
 
 // Called to bind functionality to input

@@ -7,6 +7,7 @@
 #include "Types.h"
 #include "Characters/Enemies/EnemyCharacter.h"
 #include "Stats/CharacterStats/EnemyStats.h"
+#include "DrawDebugHelpers.h"
 #include "EnemyController.generated.h"
 
 /**
