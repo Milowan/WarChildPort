@@ -49,19 +49,31 @@ APlayerCharacter::APlayerCharacter(const FObjectInitializer& ObjectInitializer)
 	uiManager = 0;
 }
 
+void APlayerCharacter::Pause()
+{
+	Super::Pause();
+	FInputModeUIOnly inputMode;
+	APlayerController* controller = GetWorld()->GetFirstPlayerController();
+	controller->SetInputMode(inputMode);
+	controller->bShowMouseCursor = true;
+}
+
+void APlayerCharacter::UnPause()
+{
+	Super::UnPause();
+	FInputModeGameOnly inputMode;
+	APlayerController* controller = GetWorld()->GetFirstPlayerController();
+	controller->SetInputMode(inputMode);
+	controller->bShowMouseCursor = false;
+}
+
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	active = true;
 
 
-	TSubclassOf<AUIManager> uiManagerClass = 0;
-	TArray<AActor*> uiManagerArray;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), uiManagerClass, uiManagerArray);
-	if (uiManagerArray.Num() != 0)
-	{
-		uiManager = Cast<AUIManager>(uiManagerArray[0]);
-	}
+	uiManager = UUIManager::GetInstance();
 }
 
 //////////////////////////////////////////////////////////////////////////
