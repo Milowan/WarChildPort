@@ -116,5 +116,5 @@ void APlayerCharacter::Die()
 void APlayerCharacter::CloseCurrentMenu()
 {
 	//Add check if menu is open, if no menu is open, pause?
-	uiManager->CloseCurrentMenu();
+	//uiManager->CloseCurrentMenu();
 }
