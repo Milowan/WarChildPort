@@ -33,13 +33,10 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
 		float BaseLookUpRate;
 
-private:
-
-	void Pause();
-	void UnPause();
-
-
 protected:
+
+	virtual void Pause();
+	virtual void UnPause();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

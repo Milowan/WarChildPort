@@ -12,11 +12,9 @@
 UCLASS()
 class WARCHILD_API UOpenArsenal : public UBaseButton
 {
-	GENERATED_BODY()
-
 private:
 
-	UArsenalMenu* menu;
+	GENERATED_BODY()
 
 public:
 

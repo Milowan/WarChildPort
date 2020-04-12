@@ -4,44 +4,45 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/GameplayStatics.h"
-#include "GameFramework/Actor.h"
-
-// button includes
-
-#include "UI/Menus/ArsenalMenu.h"
-#include "UI/Menus/ExtractMenu.h"
-#include "UI/Menus/MainMenu.h"
-#include "UI/Menus/NavMenu.h"
 #include "Missions/MissionTracker.h"
 
 #include "UIManager.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FUIEvent);
+
 UCLASS()
-class WARCHILD_API AUIManager : public AActor
+class WARCHILD_API UUIManager : public UObject
 {
+private:
+
 	GENERATED_BODY()
-	
 
-public:	
 	// Sets default values for this actor's properties
-	AUIManager(const FObjectInitializer& ObjectInitializer);
-	~AUIManager();
+	UUIManager(const FObjectInitializer& ObjectInitializer);
+	~UUIManager();
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
+	static UUIManager* instance;
+	
 public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION(BlueprintCallable)
+	static UUIManager* GetInstance();
+	UFUNCTION(BlueprintCallable)
+	static void Release();
 
 	// Menu Functions
-	void OpenNavigation();
-	void CloseNavigation();
-	void OpenArsenal();
-	void CloseArsenal();
-	void OpenExtraction();
-	void CloseExctraction();
+	UPROPERTY(BlueprintAssignable)
+	FUIEvent OpenNavigation;
+	UPROPERTY(BlueprintAssignable)
+	FUIEvent CloseNavigation;
+	UPROPERTY(BlueprintAssignable)
+	FUIEvent OpenArsenal;
+	UPROPERTY(BlueprintAssignable)
+	FUIEvent CloseArsenal;
+	UPROPERTY(BlueprintAssignable)
+	FUIEvent OpenExtraction;
+	UPROPERTY(BlueprintAssignable)
+	FUIEvent CloseExctraction;
 
 
 

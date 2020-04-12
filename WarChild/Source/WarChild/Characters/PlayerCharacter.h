@@ -8,6 +8,7 @@
 #include "Managers/UIManager.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Stats/CharacterStats/PlayerStats.h"
+#include "Engine/World.h"
 //#include "Kismet/GameplayStatics.h"
 #include "PlayerCharacter.generated.h"
 
@@ -29,9 +30,12 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FollowCamera;
 
-	AUIManager* uiManager;
+	UUIManager* uiManager;
 
 protected:
+
+	void Pause() override;
+	void UnPause() override;
 
 	virtual void BeginPlay() override;
 

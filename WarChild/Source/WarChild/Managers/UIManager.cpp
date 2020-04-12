@@ -3,60 +3,24 @@
 
 #include "UIManager.h"
 
+UUIManager* UUIManager::instance = NULL;
+
 // Sets default values
-AUIManager::AUIManager(const FObjectInitializer& ObjectInitializer)
+UUIManager::UUIManager(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
-{
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+{}
 
+UUIManager::~UUIManager()
+{}
+
+UUIManager* UUIManager::GetInstance()
+{
+	if (instance == NULL)
+		instance = NewObject<UUIManager>();
+	return instance;
 }
 
-AUIManager::~AUIManager()
+void UUIManager::Release()
 {
+	instance = NULL;
 }
-
-// Called when the game starts or when spawned
-void AUIManager::BeginPlay()
-{
-	Super::BeginPlay();
-}
-
-// Called every frame
-void AUIManager::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
-
-void AUIManager::OpenNavigation()
-{
-
-}
-
-void AUIManager::CloseNavigation()
-{
-
-}
-
-void AUIManager::OpenArsenal()
-{
-
-}
-
-void AUIManager::CloseArsenal()
-{
-
-}
-
-void AUIManager::OpenExtraction()
-{
-
-}
-
-void AUIManager::CloseExctraction()
-{
-
-}
-
-
