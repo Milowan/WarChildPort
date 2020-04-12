@@ -16,11 +16,3 @@ UBaseMenu::UBaseMenu(const FObjectInitializer& ObjectInitializer)
 UBaseMenu::~UBaseMenu()
 {
 }
-
-void UBaseMenu::OpenMenu()
-{
-}
-
-void UBaseMenu::CloseMenu()
-{
-}

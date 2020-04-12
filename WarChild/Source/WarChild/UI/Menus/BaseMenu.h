@@ -23,8 +23,5 @@ public:
 	UBaseMenu(const FObjectInitializer& ObjectInitializer);
 	~UBaseMenu();
 
-	virtual void OpenMenu();
-	virtual void CloseMenu();
-
 
 };
