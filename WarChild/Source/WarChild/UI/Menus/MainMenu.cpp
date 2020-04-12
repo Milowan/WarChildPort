@@ -15,8 +15,10 @@ UMainMenu::~UMainMenu()
 
 void UMainMenu::OpenMenu()
 {
+	AddToViewport(0);
 }
 
 void UMainMenu::CloseMenu()
 {
+	RemoveFromViewport();
 }

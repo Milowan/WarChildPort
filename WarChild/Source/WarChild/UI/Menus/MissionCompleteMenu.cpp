@@ -15,10 +15,12 @@ UMissionCompleteMenu::~UMissionCompleteMenu()
 
 void UMissionCompleteMenu::OpenMenu()
 {
+	AddToViewport(0);
 	// MissionTracker->CurrentMission->Complete();
 	// MissionData->Save();
 }
 
 void UMissionCompleteMenu::CloseMenu()
 {
+	RemoveFromViewport();
 }

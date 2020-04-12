@@ -15,8 +15,10 @@ UArsenalMenu::~UArsenalMenu()
 
 void UArsenalMenu::OpenMenu()
 {
+	AddToViewport(0);
 }
 
 void UArsenalMenu::CloseMenu()
 {
+	RemoveFromViewport();
 }

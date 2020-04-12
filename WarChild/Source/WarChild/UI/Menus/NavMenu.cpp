@@ -16,10 +16,12 @@ UNavMenu::~UNavMenu()
 
 void UNavMenu::OpenMenu()
 {
+	AddToViewport(0);
 }
 
 void UNavMenu::CloseMenu()
 {
+	RemoveFromViewport();
 }
 
 void UNavMenu::SetMissionButtons()

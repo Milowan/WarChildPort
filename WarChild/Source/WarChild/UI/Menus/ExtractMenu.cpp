@@ -14,8 +14,10 @@ UExtractMenu::~UExtractMenu()
 
 void UExtractMenu::OpenMenu()
 {
+	AddToViewport(0);
 }
 
 void UExtractMenu::CloseMenu()
 {
+	RemoveFromViewport();
 }
