@@ -21,16 +21,6 @@ class WARCHILD_API AUIManager : public AActor
 {
 	GENERATED_BODY()
 	
-private:
-
-	enum MenuTypes {NAV, ARSENAL, EXTRACT};
-	TArray<MenuTypes> openMenus;
-	// ADD ALL YOUR DIFFERENT MENUS HERE AS NEW OBJECTS
-	UArsenalMenu* arsenal;
-	UExtractMenu* extract;
-	UMainMenu* main;
-	UNavMenu* nav;
-	AMissionTracker* tracker;
 
 public:	
 	// Sets default values for this actor's properties
@@ -53,6 +43,6 @@ public:
 	void OpenExtraction();
 	void CloseExctraction();
 
-	void CloseCurrentMenu();
+
 
 };
