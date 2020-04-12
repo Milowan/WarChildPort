@@ -15,13 +15,9 @@
 UCLASS()
 class WARCHILD_API UBaseButton : public UButton
 {
-	GENERATED_BODY()
-	
-
 private:
 
-	AUIManager* uiManager;
-
+	GENERATED_BODY()
 
 public:
 
@@ -31,7 +27,7 @@ public:
 protected:
 
 	UFUNCTION(BlueprintCallable)
-	virtual void Activate();
+	virtual void Activate() PURE_VIRTUAL(&UBaseButton::Activate, ;);
 
 
 };

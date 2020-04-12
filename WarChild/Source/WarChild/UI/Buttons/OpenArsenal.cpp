@@ -16,9 +16,5 @@ UOpenArsenal::~UOpenArsenal()
 
 void UOpenArsenal::Activate()
 {
-	Super::Activate();
-	if (!menu)
-	{
-
-	}
+	UUIManager::GetInstance()->OpenArsenal.Broadcast();
 }
