@@ -5,13 +5,21 @@
 
 
 UNavMenu::UNavMenu(const FObjectInitializer& ObjectInitializer)
-	: Super(ObjectInitializer)
+	: UBaseMenu(ObjectInitializer)
 {
 	// Set missionButtonContainer to... that (in unity it was a child component with other children)
 }
 
 UNavMenu::~UNavMenu()
 {
+}
+
+void UNavMenu::NativeOnInitialized()
+{
+	UBaseMenu::NativeOnInitialized();
+
+	uiManager->OpenNavigation.AddDynamic(this, &UNavMenu::OpenMenu);
+	uiManager->CloseNavigation.AddDynamic(this, &UNavMenu::CloseMenu);
 }
 
 void UNavMenu::OpenMenu()
@@ -32,4 +40,9 @@ void UNavMenu::SetMissionButtons()
 	// if mButton.text == MissionData.missions[i].GetName()
 	// Button.SetTargetLevel(MissionData.missions[i])
 	// break
+}
+
+void UNavMenu::Back()
+{
+	uiManager->CloseNavigation.Broadcast();
 }

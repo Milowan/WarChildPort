@@ -4,13 +4,22 @@
 #include "ArsenalMenu.h"
 
 UArsenalMenu::UArsenalMenu(const FObjectInitializer& ObjectInitializer)
-	: Super(ObjectInitializer)
+	: UBaseMenu(ObjectInitializer)
 {
 
 }
 
 UArsenalMenu::~UArsenalMenu()
 {
+}
+
+void UArsenalMenu::NativeOnInitialized()
+{
+	UBaseMenu::NativeOnInitialized();
+
+	uiManager->OpenArsenal.AddDynamic(this, &UArsenalMenu::OpenMenu);
+	uiManager->CloseArsenal.AddDynamic(this, &UArsenalMenu::CloseMenu);
+
 }
 
 void UArsenalMenu::OpenMenu()
@@ -21,4 +30,9 @@ void UArsenalMenu::OpenMenu()
 void UArsenalMenu::CloseMenu()
 {
 	RemoveFromViewport();
+}
+
+void UArsenalMenu::Back()
+{
+	uiManager->CloseArsenal.Broadcast();
 }

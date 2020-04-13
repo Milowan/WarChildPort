@@ -18,13 +18,19 @@ private:
 
 	FTransform missionButtonContainer;
 
+protected:
+
+	virtual void NativeOnInitialized() override;
+
 public:
 
 	UNavMenu(const FObjectInitializer& ObjectInitializer);
 	~UNavMenu();
 
-	virtual void OpenMenu();
-	virtual void CloseMenu();
+	void OpenMenu();
+	void CloseMenu();
+
+	virtual void Back() override;
 
 private:
 

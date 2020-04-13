@@ -19,7 +19,8 @@ public:
 	UExtractMenu(const FObjectInitializer& ObjectInitializer);
 	~UExtractMenu();
 
-	virtual void OpenMenu();
-	virtual void CloseMenu();
+	void OpenMenu();
+	void CloseMenu();
 
+	virtual void Back() override;
 };

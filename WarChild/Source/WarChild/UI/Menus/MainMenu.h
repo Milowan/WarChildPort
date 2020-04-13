@@ -12,15 +12,19 @@
 UCLASS()
 class WARCHILD_API UMainMenu : public UBaseMenu
 {
+private:
+
 	GENERATED_BODY()
+
+protected:
+
+	virtual void NativeOnInitialized() override;
 
 public:
 
 	UMainMenu(const FObjectInitializer& ObjectInitializer);
 	~UMainMenu();
 
-	virtual void OpenMenu();
-	virtual void CloseMenu();
-
-
+	void OpenMenu();
+	void CloseMenu();
 };

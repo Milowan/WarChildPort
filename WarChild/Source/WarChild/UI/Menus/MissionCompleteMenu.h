@@ -19,7 +19,8 @@ public:
 	UMissionCompleteMenu(const FObjectInitializer& ObjectInitializer);
 	~UMissionCompleteMenu();
 
-	virtual void OpenMenu();
-	virtual void CloseMenu();
+	void OpenMenu();
+	void CloseMenu();
 
+	virtual void Back() override;
 };
