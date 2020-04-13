@@ -24,3 +24,8 @@ void UMissionCompleteMenu::CloseMenu()
 {
 	RemoveFromViewport();
 }
+
+void UMissionCompleteMenu::Back()
+{
+
+}

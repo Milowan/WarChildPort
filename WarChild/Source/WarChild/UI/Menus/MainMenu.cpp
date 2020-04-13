@@ -5,12 +5,20 @@
 
 
 UMainMenu::UMainMenu(const FObjectInitializer& ObjectInitializer)
-	: Super(ObjectInitializer)
-{
-}
+	: UBaseMenu(ObjectInitializer)
+{}
 
 UMainMenu::~UMainMenu()
+{}
+
+void UMainMenu::NativeOnInitialized()
 {
+	UBaseMenu::NativeOnInitialized();
+
+	uiManager->OpenNavigation.AddDynamic(this, &UMainMenu::CloseMenu);
+	uiManager->CloseNavigation.AddDynamic(this, &UMainMenu::OpenMenu);
+	uiManager->OpenArsenal.AddDynamic(this, &UMainMenu::CloseMenu);
+	uiManager->CloseArsenal.AddDynamic(this, &UMainMenu::OpenMenu);
 }
 
 void UMainMenu::OpenMenu()
@@ -22,3 +30,4 @@ void UMainMenu::CloseMenu()
 {
 	RemoveFromViewport();
 }
+

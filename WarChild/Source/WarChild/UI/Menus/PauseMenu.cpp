@@ -3,12 +3,17 @@
 
 #include "PauseMenu.h"
 
-void UPauseMenu::OpenPauseMenu()
+void UPauseMenu::OpenMenu()
 {
 	AddToViewport(0);
 }
 
-void UPauseMenu::ClosePauseMenu()
+void UPauseMenu::CloseMenu()
 {
 	RemoveFromViewport();
+}
+
+void UPauseMenu::Back()
+{
+
 }

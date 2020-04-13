@@ -18,7 +18,8 @@ private:
 
 public:
 
-	void OpenPauseMenu();
-	void ClosePauseMenu();
-	
+	void OpenMenu();
+	void CloseMenu();
+
+	virtual void Back() override;
 };

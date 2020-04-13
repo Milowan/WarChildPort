@@ -21,3 +21,8 @@ void UExtractMenu::CloseMenu()
 {
 	RemoveFromViewport();
 }
+
+void UExtractMenu::Back()
+{
+
+}
