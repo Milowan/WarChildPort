@@ -18,6 +18,7 @@ void AEnemyCharacter::BeginPlay()
 	mesh->SetVisibility(false);
 	mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	equippedWeapon->GetMesh()->SetVisibility(false);
+	currentV = FVector::ZeroVector;
 	
 }
 
@@ -46,7 +47,21 @@ void AEnemyCharacter::Die()
 	--liveEnemies;
 }
 
+void AEnemyCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	prevV = currentV;
+	currentV = GetVelocity();
+
+}
+
 int AEnemyCharacter::GetLiveEnemyCount()
 {
 	return liveEnemies;
+}
+
+float AEnemyCharacter::GetAccelleration()
+{
+	return (currentV.Size() - prevV.Size()) / GetStats()->GetMovSpeed();
 }
