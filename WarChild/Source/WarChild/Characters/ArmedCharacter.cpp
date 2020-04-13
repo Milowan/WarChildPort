@@ -19,7 +19,6 @@ void AArmedCharacter::PullTrigger()
 void AArmedCharacter::SetEquippedWeapon(AWeapon* weapon)
 {
 	equippedWeapon = weapon;
-	weapon->SetOwner(this);
 }
 
 AWeapon* AArmedCharacter::GetEquippedWeapon()

@@ -58,6 +58,7 @@ public:
 
 	virtual void Destroyed() override;
 
+	UFUNCTION(BlueprintCallable)
 	void Initialize();
 
 	void Trigger();

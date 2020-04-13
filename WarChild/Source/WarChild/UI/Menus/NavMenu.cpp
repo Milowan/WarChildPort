@@ -18,8 +18,8 @@ void UNavMenu::NativeOnInitialized()
 {
 	UBaseMenu::NativeOnInitialized();
 
-	uiManager->OpenNavigation.AddDynamic(this, &UNavMenu::OpenMenu);
-	uiManager->CloseNavigation.AddDynamic(this, &UNavMenu::CloseMenu);
+	//uiManager->OpenNavigation.AddDynamic(this, &UNavMenu::OpenMenu);
+	//uiManager->CloseNavigation.AddDynamic(this, &UNavMenu::CloseMenu);
 }
 
 void UNavMenu::OpenMenu()
