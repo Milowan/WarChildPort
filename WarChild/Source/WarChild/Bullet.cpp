@@ -37,7 +37,6 @@ void ABullet::Initialize(AActor* weapon, float speed, float dmg)
 	flightSpeed = speed;
 	damage = dmg;
 	age = 0.0f;
-	SetOwner(weapon->GetOwner());
 }
 
 void ABullet::Despawn()
