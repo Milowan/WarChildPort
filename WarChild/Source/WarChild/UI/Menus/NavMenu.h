@@ -27,7 +27,9 @@ public:
 	UNavMenu(const FObjectInitializer& ObjectInitializer);
 	~UNavMenu();
 
+	UFUNCTION()
 	void OpenMenu();
+	UFUNCTION()
 	void CloseMenu();
 
 	virtual void Back() override;

@@ -25,7 +25,9 @@ public:
 	UArsenalMenu(const FObjectInitializer& ObjectInitializer);
 	~UArsenalMenu();
 
+	UFUNCTION()
 	void OpenMenu();
+	UFUNCTION()
 	void CloseMenu();
 
 	virtual void Back() override;

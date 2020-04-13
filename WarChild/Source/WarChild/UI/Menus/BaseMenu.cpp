@@ -28,7 +28,7 @@ void UBaseMenu::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 	Super::NativeTick(MyGeometry, InDeltaTime);
 
 	UWorld* world = GetWorld();
-	if (world->GetFirstPlayerController()->WasInputKeyJustPressed(FKey(FName(TEXT("Cancel")))))
+	if (world->GetFirstPlayerController()->WasInputKeyJustPressed(FKey(FName(TEXT("Q")))))
 	{
 		Back();
 	}

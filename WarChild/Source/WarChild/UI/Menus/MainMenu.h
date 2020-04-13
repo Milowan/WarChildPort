@@ -25,6 +25,8 @@ public:
 	UMainMenu(const FObjectInitializer& ObjectInitializer);
 	~UMainMenu();
 
+	UFUNCTION()
 	void OpenMenu();
+	UFUNCTION()
 	void CloseMenu();
 };
