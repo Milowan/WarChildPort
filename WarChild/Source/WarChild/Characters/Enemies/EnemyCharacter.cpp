@@ -63,5 +63,9 @@ int AEnemyCharacter::GetLiveEnemyCount()
 
 float AEnemyCharacter::GetAccelleration()
 {
-	return (currentV.Size() - prevV.Size()) / GetStats()->GetMovSpeed();
+	if (GetStats())
+	{
+		return (currentV.Size() - prevV.Size()) / GetStats()->GetMovSpeed();
+	}
+	return 0;
 }
