@@ -23,6 +23,8 @@ private:
 	float wanderRangeMax;
 	bool alert;
 	static int liveEnemies;
+	FVector prevV;
+	FVector currentV;
 
 protected:
 
@@ -35,6 +37,11 @@ public:
 	void Place(FTransform tf);
 	void Die() override;
 
+	virtual void Tick(float DeltaTime) override;
+
 	static int GetLiveEnemyCount();
+
+	UFUNCTION(BlueprintCallable)
+	float GetAccelleration();
 
 };
