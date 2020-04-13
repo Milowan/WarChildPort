@@ -17,8 +17,8 @@ void UArsenalMenu::NativeOnInitialized()
 {
 	UBaseMenu::NativeOnInitialized();
 
-	//uiManager->OpenArsenal.AddDynamic(this, &UArsenalMenu::OpenMenu);
-	//uiManager->CloseArsenal.AddDynamic(this, &UArsenalMenu::CloseMenu);
+	uiManager->OpenArsenal.AddDynamic(this, &UArsenalMenu::OpenMenu);
+	uiManager->CloseArsenal.AddDynamic(this, &UArsenalMenu::CloseMenu);
 
 }
 
