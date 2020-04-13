@@ -7,6 +7,8 @@
 #include "CollisionQueryParams.h"
 #include "Characters/BaseCharacter.h"
 #include "Components/SphereComponent.h"
+#include "Components/StaticMeshComponent.h"
+#include "UObject/ConstructorHelpers.h"
 #include "Bullet.generated.h"
 
 UCLASS()
@@ -22,6 +24,7 @@ private:
 	float age;
 	FVector forward;
 	USphereComponent* root;
+	UStaticMeshComponent* bulletTrace;
 
 protected:
 

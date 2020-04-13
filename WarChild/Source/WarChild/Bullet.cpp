@@ -14,6 +14,11 @@ ABullet::ABullet()
 	RootComponent = root;
 	root->SetVisibility(false);
 	root->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+	bulletTrace = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BulletTracer"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh>MeshAsset(TEXT("StaticMesh'/Game/GrayBoxKit/Source/Meshes/SM_Bullet.SM_Bullet'"));
+	UStaticMesh* Asset = MeshAsset.Object;
+	bulletTrace->SetStaticMesh(Asset);
 }
 
 // Called when the game starts or when spawned
@@ -37,6 +42,7 @@ void ABullet::Initialize(AActor* weapon, float speed, float dmg)
 
 void ABullet::Despawn()
 {
+	bulletTrace->SetVisibility(false);
 	SetActorTickEnabled(false);
 }
 
@@ -47,8 +53,10 @@ void ABullet::Tick(float DeltaTime)
 
 	if (age < lifeSpan)
 	{
+		bulletTrace->SetVisibility(true);
 		age += DeltaTime;
 		FVector position = GetActorLocation();
+		bulletTrace->AddWorldTransform(FTransform(position));
 
 		FHitResult hit;
 		FCollisionQueryParams TraceParams(FName(TEXT("")), false, GetOwner());

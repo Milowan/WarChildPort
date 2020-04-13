@@ -7,7 +7,7 @@ AExterminateMissionManager::AExterminateMissionManager()
 	: Super()
 {
 	tickNum = 0;
-	tickSpacer = 5;
+	tickSpacer = 25;
 	killGoal = 20;
 	killCount = 0;
 	liveEnemies = 0;
@@ -40,9 +40,10 @@ void AExterminateMissionManager::Tick(float DeltaTime)
 		else if (liveEnemies < maxLiving)
 		{
 			AEnemyCharacter* enemy = Cast<AEnemyCharacter>(aiManager->GetInactiveEnemy());
+			int tSpawnCount = enemySpawnPoints.Num() - 1;
 			if (enemy)
 			{
-				int i = rand() * enemySpawnPoints.Num() - 1;
+				int i = rand() % tSpawnCount;
 				if (i < 0 || i > (enemySpawnPoints.Num() - 1))
 					i = 0;
 				enemy->Place(FTransform(enemySpawnPoints[i]));
