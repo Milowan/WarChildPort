@@ -7,7 +7,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "Components/SphereComponent.h"
 #include "Stats/WeaponStats/WeaponStats.h"
-#include "BulletPool.h"
+#include "Bullets/BulletPool.h"
 #include "Weapon.generated.h"
 
 UCLASS(BlueprintType)
