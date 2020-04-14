@@ -19,6 +19,11 @@ ABullet::ABullet()
 	static ConstructorHelpers::FObjectFinder<UStaticMesh>MeshAsset(TEXT("StaticMesh'/Game/GrayBoxKit/Source/Meshes/SM_Bullet.SM_Bullet'"));
 	UStaticMesh* Asset = MeshAsset.Object;
 	bulletTrace->SetStaticMesh(Asset);
+
+	float flightSpeed = 0.0f;
+	float damage = 0.0f;
+	float lifeSpan = 0.0f;
+	float age = 0.0f;
 }
 
 // Called when the game starts or when spawned
@@ -30,13 +35,13 @@ void ABullet::BeginPlay()
 
 void ABullet::Initialize(AActor* weapon, float speed, float dmg)
 {
+	flightSpeed = speed;
+	damage = dmg;
+	age = 0.0f;
 	SetActorTickEnabled(true);
 	FHitResult hit;
 	forward = weapon->GetActorForwardVector();
 	SetActorLocation(weapon->GetActorLocation() + (forward * 50), false, &hit, ETeleportType::TeleportPhysics);
-	flightSpeed = speed;
-	damage = dmg;
-	age = 0.0f;
 }
 
 void ABullet::Despawn()

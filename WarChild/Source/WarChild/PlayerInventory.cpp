@@ -5,6 +5,12 @@
 
 UPlayerInventory* UPlayerInventory::instance = NULL;
 
+UPlayerInventory::UPlayerInventory(const FObjectInitializer& OI) :
+	Super(OI)
+{
+	equippedWeapon = NULL;
+}
+
 UPlayerInventory* UPlayerInventory::GetInstance()
 {
 	if (instance == NULL)
@@ -40,4 +46,19 @@ void UPlayerInventory::SetAdvancedRifleBlueprint(TSubclassOf<class AWeapon> adva
 void UPlayerInventory::SetMachinePistolBlueprint(TSubclassOf<class AWeapon> machinePistol)
 {
 	machinePistolBP = machinePistol;
+}
+
+TSubclassOf<class AWeapon> UPlayerInventory::GetBasicRifleBlueprint()
+{
+	return basicRifleBP;
+}
+
+TSubclassOf<class AWeapon> UPlayerInventory::GetAdvancedRifleBlueprint()
+{
+	return advancedRifleBP;
+}
+
+TSubclassOf<class AWeapon> UPlayerInventory::GetMachinePistolBlueprint()
+{
+	return machinePistolBP;
 }

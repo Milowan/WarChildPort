@@ -32,6 +32,8 @@ public:
 
 public:
 
+	UPlayerInventory(const FObjectInitializer& OI);
+
 	UFUNCTION(BlueprintCallable)
 	static UPlayerInventory* GetInstance();
 	UFUNCTION(BlueprintCallable)
@@ -48,4 +50,11 @@ public:
 	void SetAdvancedRifleBlueprint(TSubclassOf<class AWeapon> advancedRifle);
 	UFUNCTION(BlueprintCallable)
 	void SetMachinePistolBlueprint(TSubclassOf<class AWeapon> machinePistol);
+
+	UFUNCTION(BlueprintCallable)
+	TSubclassOf<class AWeapon> GetBasicRifleBlueprint();
+	UFUNCTION(BlueprintCallable)
+	TSubclassOf<class AWeapon> GetAdvancedRifleBlueprint();
+	UFUNCTION(BlueprintCallable)
+	TSubclassOf<class AWeapon> GetMachinePistolBlueprint();
 };
